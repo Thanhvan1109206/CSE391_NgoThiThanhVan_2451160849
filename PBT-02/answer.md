@@ -1,4 +1,4 @@
-# PBT_02
+<img width="1538" height="693" alt="Screenshot 2026-05-04 164829" src="https://github.com/user-attachments/assets/aeff5b8c-c9c4-407e-a95a-e717bc305c90" /># PBT_02
 # PHẦN A — KIỂM TRA ĐỌC HIỂU (25 điểm)
 ## Câu A1 (5đ) — Các loại đầu vào
 **1.** type="text" → Ô nhập văn bản một dòng cơ bản → Không tự xác thực → Dùng để nhập Họ tên khách hàng hoặc Địa chỉ nhận hàng.
@@ -33,15 +33,20 @@
 
 
 TH1 đúng với dự đoán
-<img width="1919" height="868" alt="Screenshot 2026-04-28 220537" src="https://github.com/user-attachments/assets/db8bc775-4e88-4d2f-b54a-251a33a7e296" />
+ <img width="1169" height="668" alt="Screenshot 2026-05-04 164518" src="https://github.com/user-attachments/assets/13458256-2a71-4983-a4b0-cf47680d4967" />
+
 TH2 đúng với dự đoán
-<img width="1375" height="735" alt="Screenshot 2026-04-28 220837" src="https://github.com/user-attachments/assets/c64a6582-9a85-4414-bf96-c283b0baa905" />
+<img width="1673" height="657" alt="Screenshot 2026-05-04 164651" src="https://github.com/user-attachments/assets/974cfdba-cf66-4e2c-abea-f9f6a9aed65d" />
+
 TH3 đúng với dự đoán
-<img width="1499" height="797" alt="Screenshot 2026-04-28 220920" src="https://github.com/user-attachments/assets/4f8ace59-5c6f-4a97-b9c1-59825dc99d5d" />
+<img width="1290" height="685" alt="Screenshot 2026-05-04 164738" src="https://github.com/user-attachments/assets/035e6071-5b0a-4e0d-944a-c2475e48d692" />
+
 TH4 đúng với dự đoán
-<img width="801" height="707" alt="image" src="https://github.com/user-attachments/assets/000aefac-6e53-4ba4-ac79-dd344c5469a3" />
+<img width="1538" height="693" alt="Screenshot 2026-05-04 164829" src="https://github.com/user-attachments/assets/6302408e-3b6b-439d-9dda-6f3ea4aad585" />
+
 TH5 đúng với dự đoán
-<img width="997" height="749" alt="Screenshot 2026-04-28 221305" src="https://github.com/user-attachments/assets/35a83bfc-89b4-4bbe-9d39-3d4a6b926764" />
+<img width="1272" height="702" alt="Screenshot 2026-05-04 165128" src="https://github.com/user-attachments/assets/205dd642-a517-4b44-a449-9b3d029ea576" />
+
 
 ## Câu A3 (5đ) — Khả năng tiếp cận
 **1.Tại sao ```<label for="email">``` quan trọng cho trình đọc màn hình?**
