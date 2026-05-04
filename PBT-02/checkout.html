@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán đơn hàng - Như Ý Store</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid black; 
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        .text-right {
+            text-align: right; 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Xác Nhận Đơn Hàng</h1>
+    </header>
+
+    <main>
+        <section id="cart-summary">
+            <h2>1. Thông tin giỏ hàng</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Sản phẩm</th>
+                        <th>Đơn giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>iPhone 16 Pro Max</td>
+                        <td>30.000.000đ</td>
+                        <td>1</td>
+                        <td>30.000.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Ốp lưng Silicon</td>
+                        <td>500.000đ</td>
+                        <td>2</td>
+                        <td>1.000.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Sạc dự phòng 20W</td>
+                        <td>1.500.000đ</td>
+                        <td>1</td>
+                        <td>1.500.000đ</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-right"><strong>Tổng cộng:</strong></td>
+                        <td><output name="total">32.500.000đ</output></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <form action="#" method="POST">
+            <section id="search-product">
+                <h2>Quà tặng kèm</h2>
+                <label for="product-search">Tìm thêm sản phẩm tặng kèm:</label>
+                <input list="products" id="product-search" name="gift">
+                <datalist id="products"> 
+                    <option value="Tai nghe Bluetooth">
+                    <option value="Chuột không dây">
+                    <option value="Bàn phím cơ">
+                    <option value="Túi chống sốc">
+                </datalist>
+            </section>
+
+            <fieldset>
+                <legend>2. Thanh toán & Ưu đãi</legend>
+                <p>Phương thức thanh toán:</p>
+                <label>
+                    <input type="radio" name="payment" value="cod" checked> Tiền mặt (COD)
+                </label>
+                <label>
+                    <input type="radio" name="payment" value="bank"> Chuyển khoản
+                </label>
+                <label>
+                    <input type="radio" name="payment" value="wallet"> Ví điện tử
+                </label>
+
+                <p>
+                    <label for="coupon">Mã giảm giá:</label>
+                    <input type="text" id="coupon" name="coupon" 
+                           pattern="SALE[0-9]{4}" 
+                           placeholder="VD: SALE2026"
+                           title="Mã giảm giá phải bắt đầu bằng SALE và 4 chữ số">
+                </p>
+
+                <p>
+                    <label for="note">Ghi chú đơn hàng:</label><br>
+                    <textarea id="note" name="note" rows="3" cols="50" placeholder="Lưu ý cho người giao hàng..."></textarea>
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>3. Thông tin giao hàng</legend>
+                <p>
+                    <label for="delivery-date">Ngày giao hàng mong muốn:</label>
+                    <input type="date" id="delivery-date" name="delivery-date" min="2026-04-29" required>
+                </p>
+
+                <p>
+                    <label for="time-slot">Khung giờ giao:</label>
+                    <select id="time-slot" name="time-slot">
+                        <option value="morning">Sáng 8-12h</option>
+                        <option value="afternoon">Chiều 14-18h</option>
+                        <option value="evening">Tối 18-21h</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="duration">Thời gian chờ tối đa (1-7 ngày):</label>
+                    <input type="range" id="duration" name="duration" min="1" max="7" step="1" value="3">
+                </p>
+
+                <p>
+                    Mức độ ưu tiên nhận hàng: 
+                    <meter min="0" max="100" low="30" high="80" optimum="100" value="90"></meter>
+                </p>
+            </fieldset>
+
+            <div style="margin-top: 20px;">
+                <button type="submit" aria-label="Xác nhận đặt hàng">🚀 Xác nhận đặt hàng</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <progress value="80" max="100"></progress> <p>Bước 3/4: Thanh toán & Xác nhận</p>
+    </footer>
+
+</body>
+</html>
