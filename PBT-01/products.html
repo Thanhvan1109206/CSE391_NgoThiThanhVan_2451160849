@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách sản phẩm - Thanh Vân Store</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Cửa Hàng Công Nghệ Thanh Vân</h1>
+        <nav>
+            <ul>
+                <li><a href="#san-pham">Sản phẩm nổi bật</a></li>
+                <li><a href="#so-sanh">So sánh sản phẩm</a></li>
+                <li><a href="#footer-links">Thông tin thêm</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="san-pham">
+            <h2>Sản phẩm nổi bật</h2>
+            
+            <article>
+                <figure>
+                    <img src="https://placehold.co/300x200" alt="Laptop Gaming">
+                </figure>
+                <h3>Laptop Gaming </h3>
+                <p>Cấu hình mạnh mẽ dành cho đồ họa và chơi game mượt mà.</p>
+                <p>Giá: <strong>20.000.000đ</strong></p>
+                <a href="#">Mua ngay</a>
+            </article>
+
+            <article>
+                <figure>
+                    <img src="https://placehold.co/300x200" alt="iPhone 15">
+                </figure>
+                <h3>iPhone 15 Pro Max</h3>
+                <p>Camera siêu sắc nét, hiệu năng đỉnh cao từ Apple.</p>
+                <p>Giá: <mark>32.000.000đ</mark></p>
+                <a href="#">Mua ngay</a>
+            </article>
+
+            <article>
+                <figure>
+                    <img src="https://placehold.co/300x200" alt="Bàn phím cơ">
+                </figure>
+                <h3>Bàn phím cơ không dây</h3>
+                <p>Trải nghiệm gõ phím tuyệt vời với đèn LED RGB.</p>
+                <p>Giá: <strong>1.000.000đ</strong></p>
+                <a href="#">Mua ngay</a>
+            </article>
+
+            <article>
+                <figure>
+                    <img src="https://placehold.co/300x200" alt="Tai nghe chống ồn">
+                </figure>
+                <h3>Tai nghe Sony WH-1000XM5</h3>
+                <p>Công nghệ chống ồn hàng đầu thế giới.</p>
+                <p>Giá: <mark>6.000.000đ</mark></p>
+                <a href="#">Mua ngay</a>
+            </article>
+        </section>
+
+        <hr>
+
+        <section id="so-sanh">
+            <h2>Bảng so sánh chi tiết</h2>
+            <!-- Đã loại bỏ thuộc tính border="1" theo yêu cầu của validator -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tiêu chí</th>
+                        <th>Laptop Dell</th>
+                        <th>Laptop HP</th>
+                        <th>Laptop ASUS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Vi xử lý (CPU)</td>
+                        <td>Intel Core i7</td>
+                        <td>Intel Core i7</td>
+                        <td>AMD Ryzen 7</td>
+                    </tr>
+                    <tr>
+                        <td>RAM</td>
+                        <td>16GB</td>
+                        <td>16GB</td>
+                        <td>32GB</td>
+                    </tr>
+                    <tr>
+                        <td>Bộ nhớ lưu trữ</td>
+                        <td colspan="2">SSD 512GB</td> <td>SSD 1TB</td>
+                    </tr>
+                    <tr>
+                        <td>Hệ điều hành</td>
+                        <td rowspan="2">Windows 11 Home</td> <td>Windows 11 Pro</td>
+                        <td>Free DOS</td>
+                    </tr>
+                    <tr>
+                        <td>Bảo hành</td>
+                        <td>24 tháng</td>
+                        <td>12 tháng</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer id="footer-links">
+        <nav>
+            <a href="#">Chính Sách Bảo Mật</a> | 
+            <a href="#">Liên hệ hỗ trợ</a> | 
+            <a href="#">Hỏi đáp (FAQ)</a>
+        </nav>
+        <p>&copy; 2026 Ngô Thị Thanh Vân.</p>
+    </footer>
+
+</body>
+</html>
