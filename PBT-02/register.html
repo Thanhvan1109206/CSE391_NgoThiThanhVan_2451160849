@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký tài khoản - Như Ý Store</title>
+</head>
+<body>
+
+    <header>
+        <h1>Đăng Ký Thành Viên</h1>
+    </header>
+
+    <main>
+        <form action="#" method="POST" id="registerForm">
+            
+            <fieldset>
+                <legend>Thông tin cá nhân</legend>
+                
+                <p>
+                    <label for="fullname">Họ và tên:</label>
+                    <input type="text" id="fullname" name="fullname" 
+                           required minlength="2" maxlength="50" 
+                           placeholder="Ví dụ: Nguyễn Thị Như Ý">
+                </p>
+
+                <p>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" 
+                           required placeholder="nhuy@example.com">
+                </p>
+
+                <p>
+                    <label for="phone">Số điện thoại:</label>
+                    <input type="tel" id="phone" name="phone" 
+                           pattern="[0-9]{10}" 
+                           placeholder="0912345678" 
+                           title="Số điện thoại phải bao gồm 10 chữ số">
+                </p>
+
+                <p>
+                    <label for="dob">Ngày sinh:</label>
+                    <input type="date" id="dob" name="dob" 
+                           max="2026-04-28" 
+                           required>
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Tài khoản</legend>
+
+                <p>
+                    <label for="username">Tên đăng nhập:</label>
+                    <input type="text" id="username" name="username" 
+                           pattern="^[a-zA-Z0-9_]{3,20}$" 
+                           placeholder="nhuy_3011"
+                           title="Từ 3-20 ký tự, chỉ gồm chữ cái, số và dấu gạch dưới">
+                </p>
+
+                <p>
+                    <label for="password">Mật khẩu:</label>
+                    <input type="password" id="password" name="password" 
+                           required minlength="8" 
+                           pattern="(?=.*\d)(?=.*[A-Z]).{8,}"
+                           placeholder="••••••••"
+                           title="Tối thiểu 8 ký tự, bao gồm ít nhất 1 chữ hoa và 1 số">
+                </p>
+
+                <p>
+                    <label for="confirm_password">Xác nhận mật khẩu:</label>
+                    <input type="password" id="confirm_password" name="confirm_password" 
+                           required minlength="8"
+                           pattern="(?=.*\d)(?=.*[A-Z]).{8,}"
+                           placeholder="••••••••">
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Thông tin giao hàng</legend>
+
+                <p>
+                    <label for="city">Thành phố:</label>
+                    <select id="city" name="city" required>
+                        <option value="">-- Chọn thành phố --</option>
+                        <option value="hanoi">Hà Nội</option>
+                        <option value="hcm">TP. Hồ Chí Minh</option>
+                        <option value="danang">Đà Nẵng</option>
+                        <option value="haiphong">Hải Phòng</option>
+                        <option value="cantho">Cần Thơ</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="district">Quận/Huyện:</label>
+                    <select id="district" name="district">
+                        <option value="dongda">Đống Đa</option>
+                        <option value="thanhxuan">Thanh Xuân</option>
+                        <option value="caugiay">Cầu Giấy</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="address">Địa chỉ chi tiết:</label>
+                    <textarea id="address" name="address" rows="3" 
+                              placeholder="Số nhà, tên đường, phường/xã..."></textarea>
+                </p>
+
+                <p>
+                    Giới tính: 
+                    <label><input type="radio" name="gender" value="male"> Nam</label>
+                    <label><input type="radio" name="gender" value="female"> Nữ</label>
+                    <label><input type="radio" name="gender" value="other"> Khác</label>
+                </p>
+
+                <p>
+                    <label>
+                        <input type="checkbox" name="terms" required> 
+                        Tôi đồng ý với các điều khoản của cửa hàng
+                    </label>
+                </p>
+            </fieldset>
+
+            <div class="actions">
+                <button type="submit">Gửi đăng ký</button>
+                <button type="reset">Đặt lại form</button>
+            </div>
+
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Như Ý E-Commerce</p>
+    </footer>
+
+</body>
+</html>
