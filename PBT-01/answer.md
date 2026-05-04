@@ -54,21 +54,21 @@ Trang web này sử dụng quá nhiều thẻ <div> cho mọi phần (header, me
 
 Các lỗi semantic:
 Lỗi 1: Dùng <div class="header">
-→ Nên dùng <header> để thể hiện phần đầu trang
+→ Nên dùng <header>
 Lỗi 2: Menu dùng <div>
-→ Nên dùng <nav> và danh sách <ul><li> để đúng ngữ nghĩa điều hướng
+→ Nên dùng <nav> và <ul><li>
 Lỗi 3: Dùng <div class="product">
-→ Nên dùng <article> vì mỗi sản phẩm là một nội dung độc lập
+→ Nên dùng <article>
 Lỗi 4: Dùng <div class="title">
-→ Nên dùng thẻ heading như <h2> để thể hiện tiêu đề
-Lỗi 5: Ảnh không có thuộc tính alt
-→ Làm Google không hiểu nội dung ảnh
-Lỗi 6: Không dùng <figure> cho hình ảnh
-→ Thiếu ngữ nghĩa cho nội dung media
+→ Nên dùng <h2>
+Lỗi 5: Ảnh không có alt
+→ Google không hiểu nội dung ảnh
+Lỗi 6: Không dùng <figure>
+→ Thiếu ngữ nghĩa cho hình ảnh
 
 <header>
     <div class="logo">ShopTLU</div>
-    
+
     <nav>
         <ul>
             <li><a href="/">Trang chủ</a></li>
