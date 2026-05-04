@@ -3,133 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách sản phẩm - Thanh Vân Store</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-    </style>
+    <title>Trang sản phẩm</title>
 </head>
+
 <body>
 
-    <header>
-        <h1>Cửa Hàng Công Nghệ Thanh Vân</h1>
-        <nav>
-            <ul>
-                <li><a href="#san-pham">Sản phẩm nổi bật</a></li>
-                <li><a href="#so-sanh">So sánh sản phẩm</a></li>
-                <li><a href="#footer-links">Thông tin thêm</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <nav>
+        <a href="#featured">Sản phẩm nổi bật</a> |
+        <a href="#compare">So sánh</a> |
+        <a href="#footer">Liên hệ</a>
+    </nav>
+</header>
 
-    <main>
-        <section id="san-pham">
-            <h2>Sản phẩm nổi bật</h2>
-            
-            <article>
-                <figure>
-                    <img src="https://placehold.co/300x200" alt="Laptop Gaming">
-                </figure>
-                <h3>Laptop Gaming </h3>
-                <p>Cấu hình mạnh mẽ dành cho đồ họa và chơi game mượt mà.</p>
-                <p>Giá: <strong>20.000.000đ</strong></p>
-                <a href="#">Mua ngay</a>
-            </article>
+<main>
 
-            <article>
-                <figure>
-                    <img src="https://placehold.co/300x200" alt="iPhone 15">
-                </figure>
-                <h3>iPhone 15 Pro Max</h3>
-                <p>Camera siêu sắc nét, hiệu năng đỉnh cao từ Apple.</p>
-                <p>Giá: <mark>32.000.000đ</mark></p>
-                <a href="#">Mua ngay</a>
-            </article>
+    <!-- SẢN PHẨM NỔI BẬT -->
+    <section id="featured">
+        <h1>Sản phẩm nổi bật</h1>
 
-            <article>
-                <figure>
-                    <img src="https://placehold.co/300x200" alt="Bàn phím cơ">
-                </figure>
-                <h3>Bàn phím cơ không dây</h3>
-                <p>Trải nghiệm gõ phím tuyệt vời với đèn LED RGB.</p>
-                <p>Giá: <strong>1.000.000đ</strong></p>
-                <a href="#">Mua ngay</a>
-            </article>
+        <article>
+            <figure>
+                <img src="https://placehold.co/300x200" alt="Ảnh iPhone 16">
+                <figcaption>iPhone 16</figcaption>
+            </figure>
+            <h3>iPhone 16</h3>
+            <p>Điện thoại cao cấp, hiệu năng mạnh</p>
+            <p>Giá: <strong>25.000.000đ</strong></p>
+            <a href="#">Mua ngay</a>
+        </article>
 
-            <article>
-                <figure>
-                    <img src="https://placehold.co/300x200" alt="Tai nghe chống ồn">
-                </figure>
-                <h3>Tai nghe Sony WH-1000XM5</h3>
-                <p>Công nghệ chống ồn hàng đầu thế giới.</p>
-                <p>Giá: <mark>6.000.000đ</mark></p>
-                <a href="#">Mua ngay</a>
-            </article>
-        </section>
+        <article>
+            <figure>
+                <img src="https://placehold.co/300x200" alt="Ảnh Samsung S24">
+                <figcaption>Samsung S24</figcaption>
+            </figure>
+            <h3>Samsung S24</h3>
+            <p>Thiết kế đẹp, camera chất lượng</p>
+            <p>Giá: <strong>22.000.000đ</strong></p>
+            <a href="#">Mua ngay</a>
+        </article>
 
-        <hr>
+        <article>
+            <figure>
+                <img src="https://placehold.co/300x200" alt="Ảnh Xiaomi 14">
+                <figcaption>Xiaomi 14</figcaption>
+            </figure>
+            <h3>Xiaomi 14</h3>
+            <p>Giá rẻ, cấu hình tốt</p>
+            <p>Giá: <mark>15.000.000đ</mark></p>
+            <a href="#">Mua ngay</a>
+        </article>
 
-        <section id="so-sanh">
-            <h2>Bảng so sánh chi tiết</h2>
-            <!-- Đã loại bỏ thuộc tính border="1" theo yêu cầu của validator -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>Tiêu chí</th>
-                        <th>Laptop Dell</th>
-                        <th>Laptop HP</th>
-                        <th>Laptop ASUS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Vi xử lý (CPU)</td>
-                        <td>Intel Core i7</td>
-                        <td>Intel Core i7</td>
-                        <td>AMD Ryzen 7</td>
-                    </tr>
-                    <tr>
-                        <td>RAM</td>
-                        <td>16GB</td>
-                        <td>16GB</td>
-                        <td>32GB</td>
-                    </tr>
-                    <tr>
-                        <td>Bộ nhớ lưu trữ</td>
-                        <td colspan="2">SSD 512GB</td> <td>SSD 1TB</td>
-                    </tr>
-                    <tr>
-                        <td>Hệ điều hành</td>
-                        <td rowspan="2">Windows 11 Home</td> <td>Windows 11 Pro</td>
-                        <td>Free DOS</td>
-                    </tr>
-                    <tr>
-                        <td>Bảo hành</td>
-                        <td>24 tháng</td>
-                        <td>12 tháng</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </main>
+        <article>
+            <figure>
+                <img src="https://placehold.co/300x200" alt="Ảnh OPPO Find X">
+                <figcaption>OPPO Find X</figcaption>
+            </figure>
+            <h3>OPPO Find X</h3>
+            <p>Thiết kế hiện đại, sạc nhanh</p>
+            <p>Giá: <strong>18.000.000đ</strong></p>
+            <a href="#">Mua ngay</a>
+        </article>
 
-    <footer id="footer-links">
-        <nav>
-            <a href="#">Chính Sách Bảo Mật</a> | 
-            <a href="#">Liên hệ hỗ trợ</a> | 
-            <a href="#">Hỏi đáp (FAQ)</a>
-        </nav>
-        <p>&copy; 2026 Ngô Thị Thanh Vân.</p>
-    </footer>
+    </section>
+
+    <!-- BẢNG SO SÁNH -->
+    <section id="compare">
+        <h2>Bảng so sánh sản phẩm</h2>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th rowspan="2">Tiêu chí</th>
+                    <th colspan="3">Sản phẩm</th>
+                </tr>
+                <tr>
+                    <th>iPhone 16</th>
+                    <th>Samsung S24</th>
+                    <th>Xiaomi 14</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Giá</td>
+                    <td>25 triệu</td>
+                    <td>22 triệu</td>
+                    <td>15 triệu</td>
+                </tr>
+                <tr>
+                    <td>Màn hình</td>
+                    <td>6.1 inch</td>
+                    <td>6.2 inch</td>
+                    <td>6.3 inch</td>
+                </tr>
+                <tr>
+                    <td>Camera</td>
+                    <td>48MP</td>
+                    <td>50MP</td>
+                    <td>50MP</td>
+                </tr>
+                <tr>
+                    <td>Pin</td>
+                    <td>3200mAh</td>
+                    <td>4000mAh</td>
+                    <td>4500mAh</td>
+                </tr>
+                <tr>
+                    <td>Hệ điều hành</td>
+                    <td>iOS</td>
+                    <td>Android</td>
+                    <td>Android</td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="4">Thông tin chỉ mang tính tham khảo</td>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
+
+</main>
+
+<footer id="footer">
+    <p>
+        <a href="#">Chính sách</a> |
+        <a href="#">Liên hệ</a> |
+        <a href="https://google.com" target="_blank">FAQ</a>
+    </p>
+</footer>
 
 </body>
 </html>
