@@ -65,7 +65,6 @@ TH5 đúng với dự đoán
 
 * **Mở rộng vùng thao tác:** Người dùng có thể nhấp vào chính phần chữ của label để đưa con trỏ vào ô input, giúp thao tác dễ dàng hơn, đặc biệt trên thiết bị nhỏ hoặc với người dùng gặp khó khăn khi điều khiển.
 
----
 
 ### 2. Khi nào nên dùng `<fieldset>` và `<legend>`?
 
@@ -89,8 +88,6 @@ TH5 đúng với dự đoán
 </fieldset>
 ```
 
----
-
 ### 3. Khi nào dùng `aria-label`? Vì sao không nên dùng khi đã có `<label>`?
 
 * **Trường hợp sử dụng:**
@@ -103,5 +100,113 @@ TH5 đúng với dự đoán
   Ưu tiên dùng HTML chuẩn như `<label>` vì ổn định và dễ hiểu hơn.
   `aria-label` chỉ nên dùng khi không thể hiển thị văn bản trực tiếp trên giao diện.
 
+## Câu A4 (5đ) — Media
+
+### 1. Thuộc tính `loading="lazy"` trong thẻ `<img>`
+
+* **Giải thích:** Đây là cơ chế “tải trì hoãn”. Thay vì tải toàn bộ hình ảnh ngay khi trang được mở, trình duyệt chỉ tải ảnh khi người dùng cuộn đến gần vị trí của chúng.
+
+* **Lợi ích:**
+
+  * **Tăng tốc độ tải trang:** Giảm dữ liệu cần tải ban đầu, giúp hiển thị nhanh hơn.
+  * **Tiết kiệm băng thông:** Đặc biệt hữu ích với người dùng mạng di động vì không phải tải những ảnh chưa xem tới.
+
+* **Khi không nên dùng:** Không áp dụng cho các hình ảnh ở phần đầu trang (above the fold) như logo hoặc banner chính, vì sẽ gây hiện tượng trễ hiển thị.
+
+
+### 2. Thẻ `<video>` và định dạng
+
+* **Vì sao dùng nhiều `<source>`?**
+  Mỗi trình duyệt hỗ trợ các định dạng khác nhau. Việc cung cấp nhiều nguồn giúp trình duyệt tự chọn định dạng phù hợp nhất; nếu một định dạng không chạy, nó sẽ thử định dạng khác.
+
+* **Một số định dạng phổ biến:**
+
+  * **MP4 (.mp4):** Tương thích rộng rãi trên hầu hết thiết bị và trình duyệt.
+  * **WebM (.webm):** Dung lượng nhẹ, chất lượng tốt, tối ưu cho web.
+  * **Ogg (.ogv):** Mã nguồn mở, thường dùng làm phương án dự phòng.
+
+
+### 3. Thuộc tính `alt` (Alternative Text)
+
+* **Vai trò:**
+  Hiển thị nội dung thay thế khi ảnh không tải được, hỗ trợ trình đọc màn hình mô tả hình ảnh, đồng thời giúp công cụ tìm kiếm hiểu nội dung (SEO).
+
+* **Cách viết hiệu quả:**
+
+  * **Ảnh sản phẩm:** alt nên mô tả chi tiết (ví dụ: màu sắc, dung lượng, góc chụp).
+  * **Ảnh trang trí:** để `alt=""` để trình đọc màn hình bỏ qua.
+  * **Biểu đồ:** mô tả nội dung chính mà biểu đồ thể hiện (xu hướng, số liệu quan trọng).
+
+
+## Câu A5 (5đ) — So sánh `<figure>` và `<img>`
+
+* **Dùng `<img>` riêng khi:**
+  Hình ảnh chỉ mang tính bổ trợ hoặc minh họa, không cần chú thích riêng. Nếu bỏ đi, nội dung chính vẫn dễ hiểu.
+
+  * Ví dụ: logo trên header hoặc icon minh họa cho tính năng.
+
+* **Dùng `<figure>` khi:**
+  Hình ảnh là một phần nội dung độc lập và cần chú thích đi kèm (`<figcaption>`). Khối này có thể tách ra mà vẫn giữ nguyên ý nghĩa.
+
+  * Ví dụ: ảnh chi tiết sản phẩm kèm mô tả, hoặc biểu đồ trong bài viết.
+
+
+## PHẦN C — PHÂN TÍCH & SUY LUẬN (20 điểm)
+
+### Câu C1 (10đ) — Gỡ lỗi
+
+* **Lỗi 1:** Ô nhập “Tên” thiếu `<label>` và `id`.
+  → Sửa: `<label for="name">Tên:</label> <input type="text" id="name" name="name" required>`
+
+* **Lỗi 2:** Ô “Email” thiếu `<label>`, `required` và `name`.
+  → Sửa: `<label for="email">Email:</label> <input type="email" id="email" name="email" required>`
+
+* **Lỗi 3:** Ô “Mật khẩu” thiếu `<label>` và ràng buộc độ dài.
+  → Sửa: `<label for="pw">Mật khẩu:</label> <input type="password" id="pw" name="password" minlength="8" required>`
+
+* **Lỗi 4:** Ô “Nhập lại mật khẩu” thiếu `<label>` và định danh riêng.
+  → Sửa: `<label for="re-pw">Nhập lại mật khẩu:</label> <input type="password" id="re-pw" name="re-password" required>`
+
+* **Lỗi 5:** Ô “Phone” dùng sai kiểu dữ liệu.
+  → Sửa: `<label for="tel">Phone:</label> <input type="tel" id="tel" name="phone" pattern="[0-9]{10}">`
+
+* **Lỗi 6:** `<select>` thiếu `<label>` và `name`.
+  → Sửa: `<label for="city">Thành phố:</label> <select id="city" name="city">...</select>`
+
+* **Lỗi 7:** Checkbox không có input bên trong label.
+  → Sửa: `<label><input type="checkbox" name="agree" required> Tôi đồng ý điều khoản</label>`
+
+* **Lỗi 8:** Dùng `<input type="submit">` thay vì `<button>`.
+  → Sửa: `<button type="submit">Gửi</button>`
+
+
+### Câu C2 (10đ) — Xác thực & chiến lược
+
+#### 1. Regex cho dữ liệu
+
+* **CMND/CCCD (12 số):**
+  `pattern="[0-9]{12}"` hoặc `\d{12}`
+
+* **Số tài khoản (10–15 số):**
+  `pattern="[0-9]{10,15}"`
+
+#### 2. HTML5 validation có đủ an toàn?
+
+* **Không đủ an toàn.**
+  Đây chỉ là kiểm tra phía client nhằm hỗ trợ trải nghiệm người dùng. Người dùng có thể dễ dàng bỏ qua bằng cách chỉnh sửa mã hoặc gửi request trực tiếp.
+
+#### 3. Những kiểm tra HTML5 không làm được
+
+* So sánh giữa các trường (ví dụ: xác nhận mật khẩu).
+* Kiểm tra dữ liệu theo thời gian thực với server (username tồn tại hay chưa).
+* Xác thực theo điều kiện (ví dụ: số điện thoại phụ thuộc quốc gia).
+
+#### 4. Rủi ro nếu chỉ kiểm tra phía frontend
+
+* **Tấn công dữ liệu (Injection):**
+  Hacker có thể gửi mã độc thay vì dữ liệu hợp lệ, gây nguy hiểm cho database.
+
+* **Sai lệch dữ liệu và logic:**
+  Dữ liệu không hợp lệ (số âm, ký tự sai) vẫn được xử lý, gây lỗi hệ thống hoặc thất thoát tài chính.
 
  
