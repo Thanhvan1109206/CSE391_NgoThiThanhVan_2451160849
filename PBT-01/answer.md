@@ -167,49 +167,31 @@ Hộp 3
 
 ## Bài B4 (15đ) — Phân tích website
 
-### Semantic HTML sử dụng:
+## 1. Semantic HTML
+- header: ...
+- nav: ...
+- footer: ...
 
-* `<header>` — phần đầu trang
-* `<section>` — chia nội dung
-* `<footer>` — cuối trang
+## 2. Non-semantic
+- div dùng làm button → nên dùng button
+- span click → nên dùng a
 
----
+## 3. Table
+- Nội dung: ...
+- thead: có/không
+- tbody: có/không
 
-### Semantic chưa đúng:
-
-* Dùng `<div>` thay `<nav>`
-* Dùng `<div>` thay `<aside>`
-
----
-
-### Table:
-
-* Nội dung: thông số sản phẩm
-* Không dùng `<thead>`, `<tbody>`
-
----
-
-### Form:
-
-* action: `/tim-kiem`
-* method: GET
-* input: text, submit
-
----
-
-### Screenshots:
-
-![Elements](screenshots/elements.png)
-![Table](screenshots/table.png)
-![Form](screenshots/form.png)
-
+## 4. Form
+- action: ...
+- method: ...
+- input types: ...
 ---
 
 # PHẦN C — SUY LUẬN
 
 ---
 
-## Câu C1 (10đ)
+## Câu C1 
 
 ```html
 <header> <!-- phần đầu -->
@@ -254,7 +236,7 @@ Hộp 3
 
 ---
 
-## Câu C2 (10đ)
+## Câu C2 
 
 Việc chỉ dùng `<div>` cho mọi thứ là không hợp lý.
 
