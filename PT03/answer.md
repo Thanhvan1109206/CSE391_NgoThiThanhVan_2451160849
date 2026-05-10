@@ -323,3 +323,331 @@ p {
 → Element có màu đen
 Vì `!important` ưu tiên cao hơn specificity thông thường nên Rule A thắng.
 ---
+---
+# PHẦN C — DEBUG & SUY LUẬN
+# Câu C1 (10đ) — Debug CSS Layout
+# 1. Tính chiều rộng thực tế
+## Sidebar
+```text
+width = 300px
+padding trái + phải = 20 + 20 = 40px
+border trái + phải = 1 + 1 = 2px
+```
+Chiều rộng thực tế:
+```text
+300 + 40 + 2 = 342px
+```
+→ Sidebar thực tế = 342px
+---
+## Content
+```text
+width = 660px
+padding trái + phải = 30 + 30 = 60px
+border trái + phải = 1 + 1 = 2px
+```
+Chiều rộng thực tế:
+```text
+660 + 60 + 2 = 722px
+```
+→ Content thực tế = 722px
+---
+# 2. Giải thích tại sao layout bị vỡ
+Tổng chiều rộng:
+```text
+342 + 722 = 1064px
+```
+Trong khi `.container` chỉ rộng:
+```text
+960px
+```
+Do tổng chiều rộng lớn hơn container nên `.content` bị đẩy xuống dòng mới.
+Nguyên nhân là:
+```text
+CSS mặc định dùng box-sizing: content-box
+```
+nên `width` KHÔNG bao gồm padding và border.
+---
+# 3. Cách sửa số 1 — Dùng border-box
+## CSS sửa
+```css
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    float: left;
+}
+
+.content {
+    width: 660px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    float: left;
+}
+```
+---
+## Giải thích
+Khi dùng:
+
+```css
+box-sizing: border-box;
+```
+thì width đã bao gồm:
+- content
+- padding
+- border
+Nên:
+```text
+300 + 660 = 960px
+```
+Layout không bị vỡ nữa.
+---
+# 4. Cách sửa số 2 — Không dùng border-box
+## CSS sửa
+```css
+.container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    width: 258px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    float: left;
+}
+
+.content {
+    width: 598px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    float: left;
+}
+```
+---
+## Giải thích
+### Sidebar
+```text
+258 + 40 + 2 = 300px
+```
+### Content
+```text
+598 + 60 + 2 = 660px
+```
+Tổng:
+```text
+300 + 660 = 960px
+```
+Nên layout không bị vỡ.
+---
+# File debug_layout.html
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Debug Layout</title>
+
+    <link rel="stylesheet" href="debug_layout.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="sidebar">
+            <h2>Sidebar</h2>
+            <p>Menu bên trái</p>
+        </div>
+
+        <div class="content">
+            <h2>Content</h2>
+            <p>Nội dung chính</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
+```
+---
+# Câu C2 (10đ) — Cascade Puzzle
+## CSS
+```css
+body { font-size: 16px; color: #333; }
+.container { font-size: 14px; }
+.card { color: blue; }
+.card .title { font-size: 20px; }
+.card p { color: inherit; }
+#featured .title { color: red; }
+.highlight { color: green !important; }
+```
+---
+## HTML
+```html
+<body>
+    <div class="container">
+        <div class="card" id="featured">
+            <h2 class="title highlight">Sản phẩm A</h2>
+            <p>Mô tả sản phẩm</p>
+        </div>
+
+        <div class="card">
+            <h2 class="title">Sản phẩm B</h2>
+            <p class="highlight">Mô tả sản phẩm B</p>
+        </div>
+    </div>
+</body>
+```
+---
+# 1. "Sản phẩm A" (h2)
+## Font-size
+### Rule áp dụng
+```css
+.container { font-size: 14px; }
+.card .title { font-size: 20px; }
+```
+`.card .title` áp dụng trực tiếp nên thắng inheritance.
+→ Font-size = 20px
+---
+## Color
+### Rule áp dụng
+```css
+#featured .title { color: red; }
+.highlight { color: green !important; }
+```
+`.highlight` có `!important` nên ưu tiên cao hơn.
+→ Color = green
+---
+# 2. "Mô tả sản phẩm" (p trong featured)
+## Color
+### Rule áp dụng
+```css
+.card { color: blue; }
+.card p { color: inherit; }
+```
+`inherit` nghĩa là lấy màu từ parent `.card`.
+`.card` có:
+```css
+color: blue;
+```
+→ Color = blue
+---
+# 3. "Sản phẩm B" (h2)
+## Font-size
+### Rule áp dụng
+```css
+.card .title { font-size: 20px; }
+```
+→ Font-size = 20px
+---
+## Color
+Không có rule riêng cho h2 này.
+Nó kế thừa từ `.card`:
+```css
+.card { color: blue; }
+```
+→ Color = blue
+---
+# 4. "Mô tả sản phẩm B" (p.highlight)
+## Color
+### Rule áp dụng
+```css
+.card p { color: inherit; }
+.highlight { color: green !important; }
+```
+`.highlight` có `!important` nên thắng.
+→ Color = green
+---
+# Giải thích Cascade + Inheritance
+## Cascade
+Browser chọn CSS dựa trên:
+1. `!important`
+2. Specificity
+3. Thứ tự xuất hiện
+---
+## Inheritance
+Một số thuộc tính như:
+- color
+- font-size
+có thể kế thừa từ phần tử cha nếu phần tử con không có giá trị riêng.
+Ví dụ:
+```css
+.card {
+    color: blue;
+}
+```
+thì text bên trong `.card` sẽ mặc định màu xanh nếu không bị rule khác ghi đè.
+---
+# File cascade_test.html
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Cascade Test</title>
+
+    <link rel="stylesheet" href="cascade_test.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card" id="featured">
+        <h2 class="title highlight">Sản phẩm A</h2>
+        <p>Mô tả sản phẩm</p>
+    </div>
+
+    <div class="card">
+        <h2 class="title">Sản phẩm B</h2>
+        <p class="highlight">Mô tả sản phẩm B</p>
+    </div>
+
+</div>
+
+</body>
+</html>
+```
+---
+# File cascade_test.css
+```css
+body {
+    font-size: 16px;
+    color: #333;
+}
+
+.container {
+    font-size: 14px;
+}
+
+.card {
+    color: blue;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card .title {
+    font-size: 20px;
+}
+
+.card p {
+    color: inherit;
+}
+
+#featured .title {
+    color: red;
+}
+
+.highlight {
+    color: green !important;
+}
+```
+---
