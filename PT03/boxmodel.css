@@ -1,0 +1,76 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial;
+    padding: 20px;
+    background: #f4f4f4;
+}
+
+/* Title */
+h1 {
+    margin: 20px 0;
+    color: #0077cc;
+}
+
+/* =========================
+   PHẦN 1
+========================= */
+
+.wrap {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.box {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid black;
+    background: white;
+}
+
+/* content-box */
+.content-box {
+    box-sizing: content-box;
+    background: #ffd6d6;
+}
+
+/* border-box */
+.border-box {
+    box-sizing: border-box;
+    background: #d6ffd6;
+}
+
+/* =========================
+   PHẦN 2
+========================= */
+
+.layout {
+    width: 1000px;
+    display: flex;
+    border: 2px solid black;
+}
+
+.left {
+    width: 250px;
+    padding: 15px;
+    background: #cfe8ff;
+}
+
+.center {
+    width: 500px;
+    padding: 20px;
+    background: white;
+}
+
+.right {
+    width: 250px;
+    padding: 15px;
+    background: #ffe7c7;
+}
