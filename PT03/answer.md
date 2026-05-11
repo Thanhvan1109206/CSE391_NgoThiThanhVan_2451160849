@@ -674,7 +674,36 @@ body {
 # Câu B2 — Box Model Lab
 Hộp 1 (content-box): 350px  
 Hộp 2 (border-box): 300px  
-
 Giải thích:
+
 content-box cộng padding + border vào width
 border-box giữ nguyên tổng width
+
+---
+# Câu B3 — Specificity Battle
+# Specificity Battle
+## 1. Danh sách 10 rules + specificity score
+| Rule | Specificity |
+|------|------|
+| p | 0,0,1 |
+| .text | 0,1,0 |
+| .highlight | 0,1,0 |
+| p.text | 0,1,1 |
+| .text.highlight | 0,2,0 |
+| p.text.highlight | 0,2,1 |
+| #demo | 1,0,0 |
+| p#demo | 1,0,1 |
+| #demo.text | 1,1,0 |
+| p#demo.text.highlight | 1,2,1 |
+---
+## 2. Element cuối cùng hiển thị màu gì? Tại sao?
+Element cuối cùng hiển thị màu **gold**.
+Vì selector:
+```css
+p#demo.text.highlight
+```
+có specificity cao nhất:
+```
+1,2,1
+```
+Selector có specificity cao hơn sẽ override selector có specificity thấp hơn.
