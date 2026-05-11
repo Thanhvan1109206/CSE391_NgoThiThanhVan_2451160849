@@ -1,0 +1,135 @@
+/* Reset box model */
+* {
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Header */
+header {
+    background: linear-gradient(to right, #0077cc, #00aaff);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+/* Navigation */
+nav {
+    background-color: #222;
+    padding: 12px;
+    text-align: center;
+}
+
+/* Navigation links */
+nav a {
+    text-decoration: none;
+    color: white;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+/* Hover effect */
+nav a:hover {
+    color: yellow;
+    text-decoration: underline;
+}
+
+/* Active link */
+.active {
+    color: #00ffcc;
+    border-bottom: 2px solid #00ffcc;
+}
+
+/* Main content */
+main {
+    width: 80%;
+    margin: 20px auto;
+}
+
+/* Headings */
+section h1,
+section h2,
+aside h2 {
+    color: #0077cc;
+}
+
+/* Figure */
+figure {
+    text-align: center;
+}
+
+/* Image */
+figure img {
+    border-radius: 50%;
+    border: 3px solid #0077cc;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: white;
+}
+
+/* Borders */
+table,
+th,
+td {
+    border: 1px solid #ccc;
+}
+
+/* Padding */
+th,
+td {
+    padding: 12px;
+    text-align: left;
+}
+
+/* Header row */
+th {
+    background-color: #333;
+    color: white;
+}
+
+/* Zebra striping */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover row */
+tr:hover {
+    background-color: #d6ecff;
+}
+
+/* Footer row */
+tfoot td {
+    text-align: center;
+    font-style: italic;
+    background-color: #eeeeee;
+}
+
+/* Aside */
+aside {
+    width: 80%;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border-left: 5px solid #0077cc;
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+    color: #ddd;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
