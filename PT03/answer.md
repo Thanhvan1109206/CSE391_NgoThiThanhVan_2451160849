@@ -652,7 +652,7 @@ body {
 ```
 ---
 # Câu B1 - Style trang Profile
-# Các loại selector trong style.css
+## Các loại selector trong style.css
 1. Universal Selector
 - *
 2. Element Selector
@@ -670,3 +670,11 @@ body {
 - nav a:hover
 - tr:hover
 - tr:nth-child(even)
+---
+# Câu B2 — Box Model Lab
+Hộp 1 (content-box): 350px  
+Hộp 2 (border-box): 300px  
+
+Giải thích:
+content-box cộng padding + border vào width
+border-box giữ nguyên tổng width
