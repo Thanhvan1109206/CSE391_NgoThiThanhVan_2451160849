@@ -651,3 +651,22 @@ body {
 }
 ```
 ---
+# Câu B1 - Style trang Profile
+# Các loại selector trong style.css
+1. Universal Selector
+- *
+2. Element Selector
+- body
+- header
+- table
+- footer
+3. Class Selector
+- .active
+4. Descendant Selector
+- nav a
+- figure img
+- section h2
+5. Pseudo-class Selector
+- nav a:hover
+- tr:hover
+- tr:nth-child(even)
