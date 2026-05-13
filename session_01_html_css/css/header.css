@@ -1,5 +1,5 @@
 .header {
-  position: sticky; /* Giúp menu dính ở trên cùng */
+  position: sticky;
   top: 0;
   background-color: var(--white);
   padding: 1rem 0;
@@ -9,14 +9,14 @@
 
 .header .container {
   display: flex;
-  justify-content: space-between; /* Logo bên trái, Menu bên phải */
+  justify-content: space-between; 
   align-items: center;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 2rem; /* Khoảng cách giữa các mục menu */
+  gap: 2rem;
 }
 
 .nav-links a {

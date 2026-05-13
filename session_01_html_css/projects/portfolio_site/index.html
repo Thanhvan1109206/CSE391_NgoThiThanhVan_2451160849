@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio - Session 1</title>
     
-    <!-- Link các file CSS theo cấu trúc thư mục của bạn -->
+    
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/hero.css">
+
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/skills.css">
+
 </head>
 <body>
     <header class="header">
@@ -23,7 +27,7 @@
         </nav>
     </header>
     <main>
-        <!-- Hero: Title + Subtitle + CTA Button -->
+        
         <section class="hero">
             <div class="hero-content">
                 <h1>Hi, I'm a <span class="highlight">Developer</span></h1>
@@ -34,6 +38,35 @@
             </div>
         </section>
     </main>
+    
+<section id="about" class="about-section">
+    <div class="container about-grid">
+        <!-- Cột 1: Giới thiệu -->
+        <div class="about-text">
+            <h2>About Me</h2>
+            <p>I am a passionate developer with a love for creating beautiful and functional web applications. I focus on writing clean code and learning new technologies every day.</p>
+        </div>
+
+        
+        <div class="skills">
+            <h2>My Skills</h2>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span>HTML/CSS</span>
+                    <span>90%</span>
+                </div>
+                <div class="progress-bar"><div class="progress" style="width: 90%"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span>JavaScript</span>
+                    <span>75%</span>
+                </div>
+                <div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
+            </div>
+        </div>
+    </div>
+</section>
 
 </body>
 </html>

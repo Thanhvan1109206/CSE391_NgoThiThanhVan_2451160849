@@ -1,5 +1,5 @@
 .hero {
-  height: 100vh; /* Full màn hình */
+  height: 100vh; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,7 +22,7 @@
   margin-bottom: 2rem;
 }
 
-/* Style cho nút bấm */
+
 .btn-primary {
   background-color: var(--primary-color);
   color: var(--white);
@@ -34,5 +34,5 @@
 
 .btn-primary:hover {
   background-color: #1d4ed8;
-  transform: translateY(-3px); /* Nhích nhẹ lên khi hover */
+  transform: translateY(-3px);
 }
