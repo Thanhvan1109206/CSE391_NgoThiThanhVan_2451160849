@@ -1,0 +1,18 @@
+.about-section {
+    padding: 80px 0;
+    background-color: var(--white);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Chia 2 cột bằng nhau */
+    gap: 50px;
+    align-items: start;
+}
+
+/* Responsive cho Mobile */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr; /* Xuống hàng trên mobile */
+    }
+}
