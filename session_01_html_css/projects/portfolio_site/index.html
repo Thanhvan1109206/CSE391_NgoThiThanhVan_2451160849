@@ -1,59 +1,39 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio | Session 01</title>
+    <title>My Portfolio - Session 1</title>
     
     <!-- Link các file CSS theo cấu trúc thư mục của bạn -->
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/hero.css">
-    
-    <!-- Google Fonts (Tùy chọn để giao diện đẹp hơn) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <!-- Header: Logo + Nav links -->
     <header class="header">
-        <div class="container">
-            <a href="#" class="logo">PORTFOLIO<span>.</span></a>
-            
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#portfolio" class="nav-link">Work</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-
-            <!-- Nút mobile menu (Sẽ xử lý ở phần responsive) -->
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+        <nav class="container">
+            <div class="logo">PORTFOLIO<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-
     <main>
-        <!-- Hero Section: Title + Subtitle + CTA Button -->
-        <section id="home" class="hero">
+        <!-- Hero: Title + Subtitle + CTA Button -->
+        <section class="hero">
             <div class="hero-content">
-                <h1 class="hero-title">Chào bạn, mình là <span>Frontend Developer</span></h1>
-                <p class="hero-subtitle">Mình xây dựng những giao diện web hiện đại, chuyên nghiệp và tối ưu trải nghiệm người dùng.</p>
+                <h1>Hi, I'm a <span class="highlight">Developer</span></h1>
+                <p>I build modern and responsive web experiences.</p>
                 <div class="hero-cta">
                     <a href="#portfolio" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-outline">Contact Me</a>
                 </div>
             </div>
         </section>
     </main>
-
-    
 
 </body>
 </html>
