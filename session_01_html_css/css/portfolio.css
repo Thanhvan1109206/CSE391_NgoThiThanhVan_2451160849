@@ -1,0 +1,20 @@
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.portfolio-item {
+    background-color: #eee; /* Màu xám tạm thời */
+    height: 250px;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    transition: var(--transition);
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05);
+} 
