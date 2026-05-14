@@ -1,0 +1,28 @@
+.hero {
+    height: calc(100vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light-color);
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-container h1 { font-size: 3rem; margin-bottom: 20px; }
+.hero-container h1 span { color: var(--primary-color); }
+
+.cta-btn {
+    display: inline-block;
+    padding: 15px 35px;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: 25px;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.cta-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-5px);
+}

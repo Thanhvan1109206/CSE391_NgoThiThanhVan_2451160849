@@ -1,0 +1,24 @@
+.header {
+    position: sticky;
+    top: 0;
+    height: var(--header-height);
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo { font-size: 1.5rem; font-weight: bold; }
+.logo span { color: var(--primary-color); }
+
+.nav-links { display: flex; gap: 30px; }
+.nav-links a:hover { color: var(--primary-color); transition: 0.3s; }
