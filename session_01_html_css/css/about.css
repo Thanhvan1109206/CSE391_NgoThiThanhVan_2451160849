@@ -1,0 +1,31 @@
+.section { padding: 80px 20px; }
+.container { max-width: 1200px; margin: 0 auto; }
+.section-title { font-size: 2.5rem; margin-bottom: 20px; color: var(--primary-color); }
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 cột bằng nhau */
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+/* Responsive cho Tablet và Mobile */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr; /* Chuyển thành 1 cột */
+        text-align: center;
+    }
+
+    .about-image {
+        order: -1; /* Đảm bảo ảnh luôn nằm trên chữ ở mobile */
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .section-title { font-size: 2rem; }
+}

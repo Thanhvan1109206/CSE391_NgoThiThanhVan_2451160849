@@ -1,0 +1,31 @@
+.skills-container { margin-top: 30px; }
+.skill-item { margin-bottom: 20px; }
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.progress-line {
+    height: 10px;
+    width: 100%;
+    background: #e0e0e0;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-line span {
+    height: 100%;
+    background: var(--primary-color);
+    position: absolute;
+    border-radius: 10px;
+    /* Hiệu ứng animation đơn giản */
+    animation: slideIn 1.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from { width: 0; }
+}
