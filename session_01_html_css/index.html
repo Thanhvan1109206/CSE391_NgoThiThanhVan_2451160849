@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/skills.css">  
+    <link rel="stylesheet" href="css/skills.css">
+    <link rel="stylesheet" href="css/portfolio.css">  
 </head>
 <body>
     <header class="header">
@@ -40,6 +41,24 @@
                 <p>I am a passionate web developer with a focus on creating clean and user-friendly experiences. I love solving complex problems and learning new technologies.</p>
             </div>
         </div>
+        <section id="portfolio" class="portfolio section">
+    <div class="container">
+        <h2 class="section-title">My Portfolio</h2>
+        <div class="portfolio-grid">
+            <!-- Item 1 -->
+            <a href="#work1" class="portfolio-item">
+                <img src="https://via.placeholder.com/600x400" alt="Work 1">
+                <div class="overlay"><span>Project Name</span></div>
+            </a>
+            <!-- Lặp lại cho đến Item 6 (Thay đổi ID từ work1 -> work6) -->
+            <a href="#work2" class="portfolio-item"><img src="https://via.placeholder.com/600x400" alt="Work 2"><div class="overlay"><span>Project 2</span></div></a>
+            <a href="#work3" class="portfolio-item"><img src="https://via.placeholder.com/600x400" alt="Work 3"><div class="overlay"><span>Project 3</span></div></a>
+            <a href="#work4" class="portfolio-item"><img src="https://via.placeholder.com/600x400" alt="Work 4"><div class="overlay"><span>Project 4</span></div></a>
+            <a href="#work5" class="portfolio-item"><img src="https://via.placeholder.com/600x400" alt="Work 5"><div class="overlay"><span>Project 5</span></div></a>
+            <a href="#work6" class="portfolio-item"><img src="https://via.placeholder.com/600x400" alt="Work 6"><div class="overlay"><span>Project 6</span></div></a>
+        </div>
+    </div>
+</section>
         <div class="skills-container">
         <div class="skill-item">
             <div class="skill-info">
@@ -57,5 +76,11 @@
         </div>
     </div>
     </section>
+    <!-- Lightbox cho item 1 -->
+<div id="work1" class="lightbox">
+    <a href="#portfolio" class="close">&times;</a>
+    <img src="https://via.placeholder.com/800x600" alt="Work 1">
+</div>
+<!-- (Tương tự cho work2 -> work6) -->
 </body>
 </html>

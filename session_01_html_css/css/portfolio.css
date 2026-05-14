@@ -1,0 +1,87 @@
+.portfolio-grid {
+    display: grid;
+    /* Desktop: 3 cột, Tablet: 2 cột, Mobile: 1 cột */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 992px) {
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 576px) {
+    .portfolio-grid { grid-template-columns: 1fr; }
+}
+
+.portfolio-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1; /* Giúp ảnh luôn là hình vuông */
+    display: block;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Giúp ảnh không bị méo */
+} 
+.portfolio-item img {
+    transition: transform 0.5s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1); /* Phóng to ảnh 10% */
+}
+
+.overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(37, 99, 235, 0.8); /* Màu primary với độ trong suốt */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-item:hover .overlay {
+    opacity: 1;
+}
+
+.overlay span {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 2px solid white;
+    padding: 10px 20px;
+}
+.lightbox {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: none; /* Mặc định ẩn */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* Khi ID của lightbox được nhắc đến trên URL (ví dụ #work1) */
+.lightbox:target {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 80%;
+    max-height: 80%;
+    border: 3px solid white;
+}
+
+.close {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    color: white;
+    font-size: 50px;
+    text-decoration: none;
+} 
