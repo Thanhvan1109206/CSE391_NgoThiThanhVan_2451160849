@@ -1,0 +1,28 @@
+.footer {
+    background: var(--dark-color);
+    color: white;
+    padding: 40px 20px;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-links { display: flex; gap: 20px; }
+
+.social-links a {
+    color: #cbd5e1;
+    transition: color 0.3s;
+}
+
+.social-links a:hover { color: var(--primary-color); } 
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}

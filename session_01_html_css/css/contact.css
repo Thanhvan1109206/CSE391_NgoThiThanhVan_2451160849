@@ -1,0 +1,46 @@
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.form-group { margin-bottom: 20px; }
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+/* Validation UI: Hiệu ứng khi click vào hoặc nhập sai/đúng */
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+input:focus:invalid { border-color: #ef4444; } /* Đỏ khi nhập sai email */
+input:valid { border-color: #10b981; }        /* Xanh khi nhập đúng format */
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+} 
