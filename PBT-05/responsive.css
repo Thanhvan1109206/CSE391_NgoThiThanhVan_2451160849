@@ -1,0 +1,232 @@
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* MOBILE FIRST */
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+}
+
+/* HEADER */
+
+.header {
+    background: #222;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 16px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* MOBILE MENU */
+
+.hamburger {
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* DESKTOP NAV HIDDEN ON MOBILE */
+
+.nav {
+    display: none;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+}
+
+/* SIDEBAR HIDDEN ON MOBILE */
+
+.sidebar {
+    display: none;
+}
+
+/* TABLET FILTER */
+
+.tablet-filter {
+    display: none;
+    padding: 16px;
+}
+
+.tablet-filter select {
+    width: 100%;
+    padding: 10px;
+}
+
+/* PRODUCT GRID */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+
+    padding: 20px;
+}
+
+/* CARD */
+
+.card {
+    background: white;
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+
+    display: block;
+}
+
+.card h3 {
+    font-size: 20px;
+    padding: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    padding: 0 10px 15px;
+}
+
+/* ADS BAR HIDDEN MOBILE */
+
+.ads-bar {
+    display: none;
+}
+
+/* FOOTER */
+
+.footer {
+    background: #222;
+    color: white;
+
+    text-align: center;
+
+    padding: 20px;
+}
+
+/* ========================= */
+/* TABLET */
+/* ========================= */
+
+@media (min-width: 768px) {
+
+    .hamburger {
+        display: none;
+    }
+
+    .nav {
+        display: flex;
+        gap: 20px;
+    }
+
+    .tablet-filter {
+        display: block;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card h3 {
+        font-size: 22px;
+    }
+
+    .card p {
+        font-size: 18px;
+    }
+
+}
+
+/* ========================= */
+/* DESKTOP */
+/* ========================= */
+
+@media (min-width: 1024px) {
+
+    .main-layout {
+        display: grid;
+
+        grid-template-columns: 220px 1fr 220px;
+
+        gap: 20px;
+
+        padding: 20px;
+    }
+
+    .sidebar {
+        display: block;
+
+        background: white;
+
+        padding: 20px;
+
+        border-radius: 10px;
+
+        height: fit-content;
+    }
+
+    .sidebar ul {
+        list-style: none;
+        margin-top: 10px;
+    }
+
+    .sidebar li {
+        margin-bottom: 10px;
+    }
+
+    .ads-bar {
+        display: block;
+
+        background: white;
+
+        padding: 20px;
+
+        border-radius: 10px;
+
+        height: fit-content;
+    }
+
+    .tablet-filter {
+        display: none;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+
+        padding: 0;
+    }
+
+    .card h3 {
+        font-size: 24px;
+    }
+
+    .card p {
+        font-size: 20px;
+    }
+
+}

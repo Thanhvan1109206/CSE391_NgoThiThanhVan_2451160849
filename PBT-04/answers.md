@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # PHẦN A — KIỂM TRA ĐỌC HIỂU
 
 # Câu A1 (10đ) — 5 Loại Positioning
@@ -246,3 +247,6 @@ Nội dung card dài/ngắn khác nhau nên nút bị lệch.
 | Card không đều | `flex-direction: column` + `margin-top: auto` |
 | Không căn giữa | `justify-content: center` + `align-items: center` |
 | Sidebar bị co | `flex-shrink: 0` |
+=======
+
+>>>>>>> 37059c8d0c9072b705815816692bcce139513d89

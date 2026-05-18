@@ -1,0 +1,23 @@
+/* COMPILED CSS */
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
