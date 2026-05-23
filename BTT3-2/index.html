@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Công Việc Cá Nhân - K66 BTTH03</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>ỨNG DỤNG QUẢN LÝ CÔNG VIỆC</h1>
+
+        <div class="statistics-bar">
+            <div class="stat-card">Tổng số: <span id="total-tasks">0</span></div>
+            <div class="stat-card" style="color: #27ae60;">Đã hoàn thành: <span id="completed-tasks">0</span></div>
+            <div class="stat-card" style="color: #e67e22;">Chưa hoàn thành: <span id="pending-tasks">0</span></div>
+        </div>
+
+        <div class="action-bar">
+            <button id="btn-open-modal">+ Thêm Công Việc Mới</button>
+        </div>
+
+        <div id="task-list" class="task-list-container">
+            </div>
+    </div>
+
+    <div id="task-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-box">
+            <h3 id="modal-title">Thêm Công Việc Mới</h3>
+            <form id="task-form">
+                <input type="hidden" id="form-mode" value="create">
+                <input type="hidden" id="old-task-id">
+                
+                <div>
+                    <label>Tiêu đề công việc:</label>
+                    <input type="text" id="task-title" required>
+                </div>
+                <div>
+                    <label>Mô tả ngắn:</label>
+                    <textarea id="task-desc" rows="3" required></textarea>
+                </div>
+                <div>
+                    <label>Hạn hoàn thành:</label>
+                    <input type="date" id="task-deadline" required>
+                </div>
+                <div>
+                    <label>Mức ưu tiên:</label>
+                    <select id="task-priority">
+                        <option value="Cao">Cao</option>
+                        <option value="Trung bình">Trung bình</option>
+                        <option value="Thấp">Thấp</option>
+                    </select>
+                </div>
+
+                <div style="margin-top:20px; text-align: right;">
+                    <button type="button" id="btn-close-modal" class="btn-secondary">Hủy</button>
+                    <button type="submit" class="btn-primary">Lưu công việc</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
