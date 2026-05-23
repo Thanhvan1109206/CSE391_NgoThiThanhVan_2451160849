@@ -15,7 +15,7 @@ const formMode = document.getElementById('form-mode');
 const oldStudentId = document.getElementById('old-student-id');
 
 // Khởi tạo mảng ảo để chứa dữ liệu (Luồng 4 sẽ chuyển sang localStorage)
-let students = [];
+let students = JSON.parse(localStorage.getItem('k66_students')) || [];
 
 // --- 2. SỰ KIỆN ĐÓNG BẬT POPUP ---
 // Mở form chế độ thêm mới
@@ -91,3 +91,81 @@ studentForm.addEventListener('submit', (e) => {
 
 // Chạy thử lần đầu khi tải trang
 renderStudents();
+// --- 5. HÀM THỐNG KÊ & ĐỒNG BỘ LOCALSTORAGE ---
+function updateStatisticsAndStorage() {
+    // Lưu xuống bộ nhớ trình duyệt
+    localStorage.setItem('k66_students', JSON.stringify(students));
+
+    // Tính toán số liệu thống kê
+    const total = students.length;
+    let average = 0;
+    if (total > 0) {
+        const totalGpa = students.reduce((sum, s) => sum + s.gpa, 0);
+        average = (totalGpa / total).toFixed(2);
+    }
+
+    document.getElementById('total-students').innerText = total;
+    document.getElementById('class-average').innerText = average;
+}
+
+// Chèn hàm đồng bộ vào logic Submit sửa dữ liệu (Cập nhật đè lên nút submit cũ ở Luồng 3)
+studentForm.addEventListener('submit', (e) => {
+    if (formMode.value === 'edit') {
+        const idCanSua = oldStudentId.value;
+        const index = students.findIndex(s => s.id === idCanSua);
+        
+        if (index !== -1) {
+            students[index] = {
+                id: inputId.value.trim(),
+                name: inputName.value.trim(),
+                dob: inputDob.value,
+                className: inputClass.value.trim(),
+                gpa: parseFloat(inputGpa.value),
+                email: inputEmail.value.trim()
+            };
+            alert("Cập nhật thông tin thành công!");
+            renderStudents();
+            modal.style.display = 'none';
+            studentForm.reset();
+        }
+    }
+    updateStatisticsAndStorage(); // Đồng bộ sau khi Thêm hoặc Sửa
+});
+
+// --- 6. EVENT DELEGATION: SỰ KIỆN CLICK NÚT SỬA / XÓA TRÊN BẢNG ---
+tableBody.addEventListener('click', (e) => {
+    const idSelected = e.target.getAttribute('data-id');
+
+    // Hành động Sửa
+    if (e.target.classList.contains('btn-edit')) {
+        const student = students.find(s => s.id === idSelected);
+        if (student) {
+            inputId.value = student.id;
+            inputName.value = student.name;
+            inputDob.value = student.dob;
+            inputClass.value = student.className;
+            inputGpa.value = student.gpa;
+            inputEmail.value = student.email;
+
+            formMode.value = 'edit';
+            oldStudentId.value = student.id;
+            document.getElementById('modal-title').innerText = "Cập Nhật Thông Tin";
+            inputId.disabled = true; // Khóa trường Mã SV
+            modal.style.display = 'flex';
+        }
+    }
+
+    // Hành động Xóa
+    if (e.target.classList.contains('btn-delete')) {
+        const confirmDelete = confirm(`Bạn có chắc muốn xóa sinh viên có mã: ${idSelected}?`);
+        if (confirmDelete) {
+            students = students.filter(s => s.id !== idSelected);
+            renderStudents();
+            updateStatisticsAndStorage();
+        }
+    }
+});
+
+// Sửa lại hàm render ở đầu để tự động gọi thống kê khi tải trang lần đầu
+// (Hãy thêm dòng gọi hàm dưới đây vào cuối hàm renderStudents() ở Luồng 3)
+updateStatisticsAndStorage();
