@@ -13,7 +13,7 @@ const formMode = document.getElementById('form-mode');
 const oldTaskId = document.getElementById('old-task-id');
 
 // Khởi tạo mảng dữ liệu tạm
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem('k66_tasks')) || [];
 
 // --- 2. SỰ KIỆN ĐÓNG / MỞ POPUP FORM ---
 btnOpenModal.addEventListener('click', () => {
@@ -84,3 +84,83 @@ taskForm.addEventListener('submit', (e) => {
 
 // Chạy khởi tạo danh sách ban đầu
 renderTasks();
+// --- 5. HÀM THỐNG KÊ & ĐỒNG BỘ LOCALSTORAGE ---
+function updateTaskSummaryAndStorage() {
+    localStorage.setItem('k66_tasks', JSON.stringify(tasks));
+
+    const total = tasks.length;
+    // Đếm số lượng phần tử thỏa mãn điều kiện bằng hàm filter
+    const completed = tasks.filter(t => t.completed).length;
+    const pending = total - completed;
+
+    document.getElementById('total-tasks').innerText = total;
+    document.getElementById('completed-tasks').innerText = completed;
+    document.getElementById('pending-tasks').innerText = pending;
+}
+
+// Bổ sung logic Sửa vào sự kiện submit form (Hợp nhất xử lý với Luồng 3)
+taskForm.addEventListener('submit', (e) => {
+    if (formMode.value === 'edit') {
+        const idCanSua = oldTaskId.value;
+        const index = tasks.findIndex(t => t.id === idCanSua);
+
+        if (index !== -1) {
+            // Cập nhật các ô dữ liệu nhưng giữ nguyên ID và trạng thái hoàn thành cũ
+            tasks[index].title = inputTitle.value.trim();
+            tasks[index].desc = inputDesc.value.trim();
+            tasks[index].deadline = inputDeadline.value;
+            tasks[index].priority = inputPriority.value;
+
+            alert("Cập nhật công việc thành công!");
+            renderTasks();
+            modal.style.display = 'none';
+            taskForm.reset();
+        }
+    }
+    updateTaskSummaryAndStorage(); // Chạy lưu trữ và tính toán lại số liệu thống kê
+});
+
+// --- 6. EVENT DELEGATION: XỬ LÝ CHECKBOX / SỬA / XÓA TRÊN TOÀN DANH SÁCH ĐỘNG ---
+taskListContainer.addEventListener('click', (e) => {
+    const idSelected = e.target.getAttribute('data-id');
+
+    // Chức năng A: Đổi trạng thái Hoàn Thành (bắt sự kiện click vào checkbox)
+    if (e.target.classList.contains('chk-toggle')) {
+        const task = tasks.find(t => t.id === idSelected);
+        if (task) {
+            task.completed = e.target.checked; // Gán trạng thái true/false theo checkbox
+            renderTasks(); // Render lại để gạch ngang chữ và đổi màu nền class .completed
+            updateTaskSummaryAndStorage();
+        }
+    }
+
+    // Chức năng B: Mở form sửa dữ liệu
+    if (e.target.classList.contains('btn-edit')) {
+        const task = tasks.find(t => t.id === idSelected);
+        if (task) {
+            inputTitle.value = task.title;
+            inputDesc.value = task.desc;
+            inputDeadline.value = task.deadline;
+            inputPriority.value = task.priority;
+
+            formMode.value = 'edit';
+            oldTaskId.value = task.id;
+            document.getElementById('modal-title').innerText = "Cập Nhật Công Việc";
+            modal.style.display = 'flex';
+        }
+    }
+
+    // Chức năng C: Xóa công việc
+    if (e.target.classList.contains('btn-delete')) {
+        const isConfirm = confirm("Bạn có chắc muốn xóa bỏ công việc này?");
+        if (isConfirm) {
+            tasks = tasks.filter(t => t.id !== idSelected);
+            renderTasks();
+            updateTaskSummaryAndStorage();
+            updateTaskSummaryAndStorage();
+        }
+    }
+});
+
+// Gọi tính toán và hiển thị số liệu ngay khi chạy ứng dụng lần đầu
+updateTaskSummaryAndStorage();
