@@ -953,3 +953,357 @@ Thực tế:
 - array rỗng → Truthy
 - object rỗng → Truthy
 - string `"0"` → Truthy
+---
+
+# Câu C1 — Debug JavaScript
+
+# Code gốc
+
+```js
+function tinhGiaGiamGia(giaBan, phanTramGiam) {
+    if (phanTramGiam < 0 || phanTramGiam > 100) {
+        return "Phần trăm giảm không hợp lệ"
+    }
+    
+    var giamGia = giaBan * phanTramGiam / 100
+    let giaSauGiam = giaBan - giamGia
+    
+    if (giaSauGiam = 0) {
+        console.log("Sản phẩm miễn phí!")
+    }
+    
+    return giaSauGiam
+}
+
+// Test
+const gia = tinhGiaGiamGia("100000", 20)
+console.log("Giá sau giảm: " + gia + "đ")
+
+const gia2 = tinhGiaGiamGia(50000, 110)
+console.log("Giá: " + gia2)
+
+for (var i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log("Item " + i)
+    }, 1000)
+}
+```
+
+---
+
+# Các lỗi trong chương trình
+
+---
+
+# Lỗi 1 — Không kiểm tra kiểu dữ liệu của giaBan
+
+## Code lỗi
+
+```js
+const gia = tinhGiaGiamGia("100000", 20)
+```
+
+`"100000"` là string, không phải number.
+
+JavaScript vẫn ép kiểu được nhưng dễ gây bug.
+
+---
+
+## Cách sửa
+
+Kiểm tra kiểu dữ liệu:
+
+```js
+if (typeof giaBan !== "number") {
+    return "Giá bán phải là số"
+}
+```
+
+---
+
+# Lỗi 2 — Không kiểm tra kiểu dữ liệu của phanTramGiam
+
+Nếu nhập:
+
+```js
+"20"
+```
+
+hoặc:
+
+```js
+abc
+```
+
+chương trình có thể lỗi hoặc tính sai.
+
+---
+
+## Cách sửa
+
+```js
+if (typeof phanTramGiam !== "number") {
+    return "Phần trăm giảm phải là số"
+}
+```
+
+---
+
+# Lỗi 3 — Dùng phép gán thay vì so sánh
+
+## Code lỗi
+
+```js
+if (giaSauGiam = 0)
+```
+
+Dấu:
+
+```js
+=
+```
+
+là gán giá trị, KHÔNG phải so sánh.
+
+---
+
+## Hậu quả
+
+```js
+giaSauGiam = 0
+```
+
+sẽ:
+- gán giá trị 0
+- điều kiện trở thành false
+
+làm mất giá trị thật của biến.
+
+---
+
+## Cách sửa
+
+```js
+if (giaSauGiam === 0)
+```
+
+---
+
+# Lỗi 4 — Thiếu dấu chấm phẩy
+
+Ví dụ:
+
+```js
+return "Phần trăm giảm không hợp lệ"
+```
+
+JavaScript vẫn chạy được do ASI (Automatic Semicolon Insertion),
+nhưng dễ gây lỗi khó debug.
+
+---
+
+## Cách sửa
+
+```js
+return "Phần trăm giảm không hợp lệ";
+```
+
+---
+
+# Lỗi 5 — Dùng var trong vòng lặp setTimeout
+
+## Code lỗi
+
+```js
+for (var i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log("Item " + i)
+    }, 1000)
+}
+```
+
+---
+
+## Kết quả thực tế
+
+Sau 1 giây sẽ in:
+
+```js
+Item 5
+Item 5
+Item 5
+Item 5
+Item 5
+```
+
+---
+
+## Vì sao?
+
+`var` có function scope.
+
+Biến `i` chỉ có MỘT bản dùng chung cho toàn bộ vòng lặp.
+
+Khi `setTimeout` chạy:
+- vòng lặp đã kết thúc
+- `i = 5`
+
+nên tất cả đều in:
+
+```js
+Item 5
+```
+
+---
+
+# Cách sửa
+
+Dùng:
+
+```js
+let
+```
+
+vì `let` có block scope.
+
+---
+
+## Code đúng
+
+```js
+for (let i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log("Item " + i);
+    }, 1000);
+}
+```
+
+---
+
+## Kết quả đúng
+
+```js
+Item 0
+Item 1
+Item 2
+Item 3
+Item 4
+```
+
+---
+
+# Lỗi 6 — Không kiểm tra giá trị âm của giaBan
+
+Nếu:
+
+```js
+giaBan = -1000
+```
+
+thì vô lý vì giá sản phẩm không thể âm.
+
+---
+
+## Cách sửa
+
+```js
+if (giaBan < 0) {
+    return "Giá bán không hợp lệ";
+}
+```
+
+---
+
+# Phiên bản code đã sửa
+
+```js
+function tinhGiaGiamGia(giaBan, phanTramGiam) {
+
+    // Kiểm tra kiểu dữ liệu
+    if (
+        typeof giaBan !== "number" ||
+        typeof phanTramGiam !== "number"
+    ) {
+        return "Input phải là số";
+    }
+
+    // Kiểm tra giá trị hợp lệ
+    if (giaBan < 0) {
+        return "Giá bán không hợp lệ";
+    }
+
+    if (phanTramGiam < 0 || phanTramGiam > 100) {
+        return "Phần trăm giảm không hợp lệ";
+    }
+
+    // Tính giảm giá
+    let giamGia = giaBan * phanTramGiam / 100;
+
+    let giaSauGiam = giaBan - giamGia;
+
+    // Kiểm tra miễn phí
+    if (giaSauGiam === 0) {
+        console.log("Sản phẩm miễn phí!");
+    }
+
+    return giaSauGiam;
+}
+
+// Test
+const gia = tinhGiaGiamGia(100000, 20);
+console.log("Giá sau giảm:", gia + "đ");
+
+const gia2 = tinhGiaGiamGia(50000, 110);
+console.log("Giá:", gia2);
+
+// setTimeout
+for (let i = 0; i < 5; i++) {
+
+    setTimeout(function () {
+
+        console.log("Item " + i);
+
+    }, 1000);
+}
+```
+
+---
+
+# Kết luận
+
+Các lỗi chính gồm:
+- ép kiểu dữ liệu
+- dùng `=` thay vì `===`
+- thiếu validate input
+- dùng `var` trong async loop
+- thiếu semicolon
+- thiếu kiểm tra dữ liệu âm
+
+Quan trọng nhất là lỗi `var` trong `setTimeout`,
+đây là lỗi rất phổ biến khi học JavaScript bất đồng bộ.
+Câu C2 (10đ) — Bài toán thực tế
+Viết chương trình tính hóa đơn nhà hàng:
+
+Input: Danh sách món ăn + giá + số lượng
+Quy tắc:
+- Tổng > 500k → giảm 10%
+- Tổng > 1 triệu → giảm 15%  
+- Ngày thứ 3 (Wednesday) → giảm thêm 5%
+- VAT 8%
+- Tip 5% (optional)
+
+Output: Hóa đơn chi tiết dạng:
+╔══════════════════════════════════════╗
+║        HÓA ĐƠN NHÀ HÀNG           ║
+╠══════════════════════════════════════╣
+║ 1. Phở bò      x2    @65k  = 130k  ║
+║ 2. Trà đá      x3    @5k   = 15k   ║
+║ 3. Bún chả     x1    @55k  = 55k   ║
+╠══════════════════════════════════════╣
+║ Tổng cộng:              200.000đ    ║
+║ Giảm giá (0%):           0đ         ║
+║ VAT (8%):                16.000đ    ║
+║ Tip (5%):                10.000đ    ║
+╠══════════════════════════════════════╣
+║ THANH TOÁN:              226.000đ   ║
+╚══════════════════════════════════════╝
