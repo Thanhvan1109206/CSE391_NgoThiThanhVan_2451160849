@@ -1,0 +1,113 @@
+[33m094a95b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Complete C1 JavaScript debugging analysis
+[33mc2a6006[m Complete B3 guess number game
+[33mddea5c8[m Complete B1 simple calculator
+[33m90273c9[m Complete A5 template literals
+[33mf10b56a[m Initial setup for JS Basics exercises
+[33m93d8e60[m feat: hoan thien change status task, update, delete va thong ke bo dem
+[33ma51513a[m feat: render danh sach card task va xu ly insert cong viec moi
+[33m71a7678[m feat: xuly DOM click de dong mo popup form cong viec
+[33m93908f7[m feat: thiet ke layout card task tĩnh va form popup
+[33m315a0ba[m feat: hoan thien tinh nang sua xoa bang event delegation, tinh gpa va luu localStorage
+[33m2740da1[m feat: code chuc nang doc du lieu tu mang ra bang va insert sinh vien moi
+[33m64ff36e[m feat: bat su kien click dong mo popup form va reset input
+[33m24e6e7b[m feat: thiet ke khung giao dien tĩnh HTML va CSS
+[33m3719be7[m revise the exercise
+[33m9c1bfcd[m Complete Bootstrap 5 exercises
+[33m179a4aa[m Complete responsive CSS advanced exercises
+[33md9c371e[m Complete CSS Layout exercises
+[33m37059c8[m Update answers.md
+[33m1b42471[m Add answers for positioning, flexbox, and grid
+[33mc706fbb[m Update answers.md
+[33mb1307a7[m [FEATURE] Style contact form inputs
+[33m78eb0a5[m [FEATURE] Build portfolio grid layout
+[33md318514[m [REFACTOR] Optimize responsive breakpoints
+[33m63b08b9[m [FEATURE] Add skills progress bars
+[33m1bf1ab0[m [STYLE] Create about section layout
+[33m68b286f[m [FEATURE] Implement header navigation
+[33mcc70416[m [FEATURE] Implement header navigation
+[33mce0505a[m [SETUP] Create session folders
+[33mab003e6[m [BUGFIX] Fix bugs
+[33m4604151[m Finish session 1 with style test
+[33m4216c98[m Complete Session 1: Portfolio website with About, Skills, Projects and Contact sections
+[33m6bbf1f6[m [FEATURE] Complete contact section and footer
+[33m20b22d6[m [FEATURE] Add portfolio grid section
+[33mcbe4ef6[m [FIX] Move CSS folder to correct directory and sync paths
+[33m1ac3061[m [FIX] Move CSS folder to correct directory and sync paths
+[33m0087630[m [FEATURE] Add skills progress bars
+[33mffac2d4[m [STYLE] Create about section layout
+[33ma31760d[m [FEATURE] Build header navigation
+[33m976abef[m [STYLE] Add base CSS variables and reset
+[33mddafb0d[m [SETUP] Initialize project structure
+[33m81d4816[m [FEATURE] Implement header navigation
+[33mac12077[m Delete session_01_html_css/projects/portfolio_site/hihi
+[33mea48d05[m [STYLE] Add base CSS variables and reset
+[33m4eed840[m Create hihi
+[33mde96a1d[m Delete BTTH01 directory
+[33m06eadc8[m restore + add PT03
+[33mbc20765[m Complete specificity battle
+[33m0f6ffd4[m add screenshots
+[33mbf67b62[m Modify section headers and add box model explanation
+[33m6fedb58[m update
+[33maa44d72[m update
+[33m438ccb5[m Document CSS selectors in answer.md
+[33m23d30a2[m add screenshots
+[33m6fda4ad[m add screenshots
+[33m88196ce[m add screenshots
+[33m3379e1e[m add screenshots
+[33m28ea806[m add screenshots
+[33mf3a5853[m finish PT03
+[33mbf099b5[m finish PT03
+[33m39e7c11[m finish PT03
+[33m6d0511f[m Create selectors_test.html
+[33m3fcb9d9[m Enhance answer.md with CSS debugging and cascade details
+[33me9029ad[m Add exercise answers for CSS concepts
+[33maa40e8d[m Create answer.md
+[33m6014712[m Create B1
+[33ma7ada76[m Add files via upload
+[33m8916902[m Update answer.md
+[33m7879f09[m Add files via upload
+[33mb3b438a[m Add files via upload
+[33m2edd7a4[m Add files via upload
+[33m9decfae[m Delete PBT-01/nav.png.png
+[33me5ec3fe[m Add files via upload
+[33mf5586ae[m Add files via upload
+[33m9f43af3[m Add files via upload
+[33m7c1d84f[m Add files via upload
+[33m98b2903[m Add files via upload
+[33mf74bd3e[m Add files via upload
+[33mce64aec[m Delete PBT-01/screenshots/B3.png
+[33m9f3ce4f[m Delete PBT-01/screenshots/ok
+[33maebe35d[m Delete PBT-02/screenshots/B3-validate.png
+[33m3606d0d[m Delete PBT-02/screenshots/B2-validate.png
+[33mc2be064[m Delete PBT-02/screenshots/B1-validate.png
+[33m88f7fa9[m Add files via upload
+[33m809ea6e[m Delete PBT-02/screenshots/hihi
+[33m0bc39f7[m Add files via upload
+[33mfa0d156[m Add files via upload
+[33m6c23549[m Create hihi
+[33mcf33623[m Add files via upload
+[33m9b9b529[m Add files via upload
+[33mc9b1f75[m Delete PBT-01/hihi
+[33m825c789[m Delete PBT-02/screenshots
+[33m8254795[m Delete PBT-02/haha
+[33ma6a62ce[m Create screenshots
+[33md160b7d[m Update checkout.html
+[33m78123e7[m Add files via upload
+[33ma1408c4[m Update media.html
+[33mf0b3149[m Add files via upload
+[33m6f36992[m Update register.html
+[33m26ddd06[m Add files via upload
+[33mc6d088f[m Update answer.md
+[33m7304526[m Update answer.md
+[33mb66a15e[m Update answer.md
+[33m0b84e7c[m Add comprehensive guide on HTML input types and validation
+[33mf2f6aa7[m Add files via upload
+[33m178efd2[m Create profile.html
+[33m5db5490[m <img width="1918" height="960" alt="z7769065554076_8c35a9621f1eec0c839075e3e685372d" src="https://github.com/user-attachments/assets/97da4b62-10ec-472a-be76-d3c8c922a9a6" />
+[33m22d8c14[m Update answer.md
+[33mc6b41f0[m Update answer.md
+[33m3f426d3[m Create answer.md
+[33m4e2ab7b[m Create ok
+[33m5b6a49b[m Create haha
+[33m0c9c554[m Create hihi
+[33me450d40[m Initial commit

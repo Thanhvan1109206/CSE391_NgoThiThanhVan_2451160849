@@ -1,0 +1,157 @@
+const students = [
+    { name: "An", math: 8, physics: 7, cs: 9, gender: "M" },
+    { name: "Bình", math: 6, physics: 9, cs: 7, gender: "F" },
+    { name: "Chi", math: 9, physics: 6, cs: 8, gender: "F" },
+    { name: "Dũng", math: 5, physics: 5, cs: 6, gender: "M" },
+    { name: "Em", math: 10, physics: 8, cs: 9, gender: "F" },
+    { name: "Phong", math: 3, physics: 4, cs: 5, gender: "M" },
+    { name: "Giang", math: 7, physics: 7, cs: 7, gender: "F" },
+    { name: "Huy", math: 4, physics: 6, cs: 3, gender: "M" },
+];
+
+// Đếm xếp loại
+let gioi = 0;
+let kha = 0;
+let trungBinh = 0;
+let yeu = 0;
+
+// Sinh viên cao nhất thấp nhất
+let maxStudent = null;
+let minStudent = null;
+
+// Tổng điểm môn học
+let totalMath = 0;
+let totalPhysics = 0;
+let totalCS = 0;
+
+// Tổng điểm theo giới tính
+let maleTotal = 0;
+let femaleTotal = 0;
+
+let maleCount = 0;
+let femaleCount = 0;
+
+console.log("| STT | Tên | TB | Xếp loại |");
+console.log("--------------------------------");
+
+// Duyệt mảng sinh viên
+for (let i = 0; i < students.length; i++) {
+
+    let student = students[i];
+
+    // Tính điểm trung bình
+    let average =
+        student.math * 0.4 +
+        student.physics * 0.3 +
+        student.cs * 0.3;
+
+    average = average.toFixed(1);
+
+    // Xếp loại
+    let rank = "";
+
+    if (average >= 8.0) {
+        rank = "Giỏi";
+        gioi++;
+    }
+    else if (average >= 6.5) {
+        rank = "Khá";
+        kha++;
+    }
+    else if (average >= 5.0) {
+        rank = "Trung bình";
+        trungBinh++;
+    }
+    else {
+        rank = "Yếu";
+        yeu++;
+    }
+
+    // In bảng
+    console.log(
+        `${i + 1} | ${student.name} | ${average} | ${rank}`
+    );
+
+    // Tìm cao nhất
+    if (maxStudent === null || average > maxStudent.average) {
+        maxStudent = {
+            name: student.name,
+            average: average
+        };
+    }
+
+    // Tìm thấp nhất
+    if (minStudent === null || average < minStudent.average) {
+        minStudent = {
+            name: student.name,
+            average: average
+        };
+    }
+
+    // Cộng điểm các môn
+    totalMath += student.math;
+    totalPhysics += student.physics;
+    totalCS += student.cs;
+
+    // Theo giới tính
+    if (student.gender === "M") {
+        maleTotal += Number(average);
+        maleCount++;
+    }
+    else {
+        femaleTotal += Number(average);
+        femaleCount++;
+    }
+}
+
+// Thống kê xếp loại
+console.log(" ");
+console.log("=== THỐNG KÊ ===");
+
+console.log("Giỏi:", gioi);
+console.log("Khá:", kha);
+console.log("Trung bình:", trungBinh);
+console.log("Yếu:", yeu);
+
+// Sinh viên cao nhất
+console.log(" ");
+console.log("=== SINH VIÊN CAO NHẤT ===");
+console.log(maxStudent);
+
+// Sinh viên thấp nhất
+console.log(" ");
+console.log("=== SINH VIÊN THẤP NHẤT ===");
+console.log(minStudent);
+
+// Điểm TB từng môn
+console.log(" ");
+console.log("=== ĐIỂM TB TỪNG MÔN ===");
+
+console.log(
+    "Math:",
+    (totalMath / students.length).toFixed(1)
+);
+
+console.log(
+    "Physics:",
+    (totalPhysics / students.length).toFixed(1)
+);
+
+console.log(
+    "CS:",
+    (totalCS / students.length).toFixed(1)
+);
+
+// Bonus
+console.log(" ");
+console.log("=== ĐIỂM TB THEO GIỚI TÍNH ===");
+
+console.log(
+    "Nam:",
+    (maleTotal / maleCount).toFixed(1)
+);
+
+console.log(
+    "Nữ:",
+    (femaleTotal / femaleCount).toFixed(1)
+);

@@ -17,19 +17,17 @@ undefined
 
 ### Giải thích
 
-`var` được hoisting lên đầu chương trình.
+`var` được hoisting lên đầu scope.
 
-JavaScript hiểu gần giống:
+JavaScript hiểu như:
 
 ```js
 var x;
-
 console.log(x);
-
 x = 5;
 ```
 
-Biến tồn tại nhưng chưa có giá trị nên kết quả là:
+Biến tồn tại nhưng chưa có giá trị nên in ra:
 
 ```js
 undefined
@@ -52,15 +50,9 @@ ReferenceError
 
 ### Giải thích
 
-`let` cũng được hoisting nhưng nằm trong vùng gọi là:
+`let` cũng được hoisting nhưng nằm trong Temporal Dead Zone (TDZ).
 
-Temporal Dead Zone (TDZ)
-
-Biến chưa được phép sử dụng trước khi khai báo nên sẽ báo lỗi:
-
-```js
-Cannot access 'y' before initialization
-```
+Không thể dùng biến trước khi khai báo.
 
 ---
 
@@ -80,19 +72,7 @@ TypeError
 
 ### Giải thích
 
-`const` không cho phép gán lại giá trị cho biến.
-
-Dòng gây lỗi:
-
-```js
-z = 20;
-```
-
-Lỗi thường gặp:
-
-```js
-Assignment to constant variable
-```
+`const` không thể gán lại giá trị.
 
 ---
 
@@ -112,19 +92,8 @@ console.log(arr);
 
 ### Giải thích
 
-`const` không cho phép gán lại biến nhưng vẫn cho phép thay đổi nội dung của array hoặc object.
-
-Ví dụ được phép:
-
-```js
-arr.push(4);
-```
-
-Ví dụ không được phép:
-
-```js
-arr = [1, 2];
-```
+`const` không cho phép gán lại biến,
+nhưng vẫn có thể thay đổi nội dung object/array.
 
 ---
 
@@ -152,21 +121,17 @@ Ngoài block: 1
 
 `let` có block scope.
 
-Biến `a` bên trong block `{}` là biến khác với biến `a` bên ngoài.
-
-Do đó:
-
-- Trong block: `a = 2`
-- Ngoài block: `a = 1`
+Biến bên trong block khác với biến bên ngoài.
 
 ---
 
 # Kết luận
 
-- `var` có hoisting và có thể truy cập trước khi khai báo với giá trị `undefined`
-- `let` và `const` không được sử dụng trước khi khai báo
-- `const` không cho phép gán lại biến nhưng có thể thay đổi nội dung object/array
-- `let` có block scope nên biến trong block và ngoài block là khác nhau
+- `var` có function scope
+- `let` và `const` có block scope
+- `const` không thể gán lại
+- `let` an toàn hơn `var`
+
 ---
 
 # Câu A2 — Data Types & Coercion
@@ -177,16 +142,11 @@ Do đó:
 console.log(typeof null);
 ```
 
-### Output
+Output:
 
 ```js
-"object"
+object
 ```
-
-### Giải thích
-
-Đây là lỗi lịch sử của JavaScript.  
-`null` thực chất không phải object nhưng `typeof null` vẫn trả về `"object"`.
 
 ---
 
@@ -194,15 +154,11 @@ console.log(typeof null);
 console.log(typeof undefined);
 ```
 
-### Output
+Output:
 
 ```js
-"undefined"
+undefined
 ```
-
-### Giải thích
-
-Biến chưa có giá trị sẽ có kiểu `undefined`.
 
 ---
 
@@ -210,21 +166,11 @@ Biến chưa có giá trị sẽ có kiểu `undefined`.
 console.log(typeof NaN);
 ```
 
-### Output
+Output:
 
 ```js
-"number"
+number
 ```
-
-### Giải thích
-
-`NaN` nghĩa là:
-
-```js
-Not a Number
-```
-
-nhưng trong JavaScript nó vẫn thuộc kiểu `number`.
 
 ---
 
@@ -232,25 +178,11 @@ nhưng trong JavaScript nó vẫn thuộc kiểu `number`.
 console.log("5" + 3);
 ```
 
-### Output
+Output:
 
 ```js
-"53"
+53
 ```
-
-### Giải thích
-
-Khi dùng dấu `+` với string, JavaScript sẽ nối chuỗi.
-
-Số `3` được chuyển thành string `"3"`.
-
-Kết quả:
-
-```js
-"5" + "3"
-```
-
-→ `"53"`
 
 ---
 
@@ -258,25 +190,11 @@ Kết quả:
 console.log("5" - 3);
 ```
 
-### Output
+Output:
 
 ```js
 2
 ```
-
-### Giải thích
-
-Dấu `-` không dùng để nối chuỗi.
-
-JavaScript sẽ ép `"5"` thành số `5`.
-
-Kết quả:
-
-```js
-5 - 3
-```
-
-→ `2`
 
 ---
 
@@ -284,21 +202,11 @@ Kết quả:
 console.log("5" * "3");
 ```
 
-### Output
+Output:
 
 ```js
 15
 ```
-
-### Giải thích
-
-Dấu `*` yêu cầu phép toán số học nên JavaScript ép cả hai string thành number.
-
-```js
-5 * 3
-```
-
-→ `15`
 
 ---
 
@@ -306,25 +214,10 @@ Dấu `*` yêu cầu phép toán số học nên JavaScript ép cả hai string 
 console.log(true + true);
 ```
 
-### Output
+Output:
 
 ```js
 2
-```
-
-### Giải thích
-
-Trong JavaScript:
-
-```js
-true = 1
-false = 0
-```
-
-Do đó:
-
-```js
-1 + 1 = 2
 ```
 
 ---
@@ -333,21 +226,13 @@ Do đó:
 console.log([] + []);
 ```
 
-### Output
+Output:
 
 ```js
-""
+
 ```
 
-### Giải thích
-
-Array rỗng chuyển thành chuỗi rỗng:
-
-```js
-"" + ""
-```
-
-→ `""`
+(chuỗi rỗng)
 
 ---
 
@@ -355,24 +240,11 @@ Array rỗng chuyển thành chuỗi rỗng:
 console.log([] + {});
 ```
 
-### Output
+Output:
 
 ```js
-"[object Object]"
+[object Object]
 ```
-
-### Giải thích
-
-- `[]` chuyển thành `""`
-- `{}` chuyển thành `"[object Object]"`
-
-Kết quả:
-
-```js
-"" + "[object Object]"
-```
-
-→ `"[object Object]"`
 
 ---
 
@@ -380,90 +252,57 @@ Kết quả:
 console.log({} + []);
 ```
 
-### Output
+Output:
 
 ```js
 0
-```
-
-hoặc:
-
-```js
-"[object Object]"
-```
-
-(tùy môi trường chạy)
-
-### Giải thích
-
-JavaScript có thể hiểu:
-
-```js
-{} 
-+[]
-```
-
-là:
-
-- `{}` = block code rỗng
-- `+[]` = ép array rỗng thành số
-
-```js
-+[] = 0
-```
-
-nên kết quả có thể là:
-
-```js
-0
-```
-
-Trong một số môi trường khác, nó có thể nối chuỗi và ra:
-
-```js
-"[object Object]"
 ```
 
 ---
 
-# Giải thích vì sao "5" + 3 và "5" - 3 khác nhau
+# Giải thích "5" + 3 và "5" - 3
 
 ## "5" + 3
 
-Dấu `+` trong JavaScript vừa dùng để:
-- cộng số
-- nối chuỗi
+Dấu `+` ưu tiên nối chuỗi.
 
-Khi có string xuất hiện, JavaScript ưu tiên nối chuỗi.
+JavaScript ép:
 
 ```js
-"5" + 3
+3 → "3"
 ```
 
-→ `"53"`
+nên:
+
+```js
+"5" + "3" = "53"
+```
 
 ---
 
 ## "5" - 3
 
-Dấu `-` chỉ dùng cho phép toán số học.
+Dấu `-` chỉ dùng cho toán học.
 
-JavaScript sẽ ép kiểu string `"5"` thành number `5`.
+JavaScript ép:
 
 ```js
-5 - 3
+"5" → 5
 ```
 
-→ `2`
+nên:
+
+```js
+5 - 3 = 2
+```
 
 ---
 
 # Kết luận
 
-- JavaScript có cơ chế ép kiểu tự động (type coercion)
-- Dấu `+` có thể dùng để nối chuỗi
-- Các toán tử `-`, `*`, `/` thường ép dữ liệu về number
-- Một số kết quả như `typeof null` là lỗi lịch sử của JavaScript
+JavaScript tự động ép kiểu dữ liệu (type coercion),
+nên cần cẩn thận khi dùng toán tử.
+
 ---
 
 # Câu A3 — So sánh == vs ===
@@ -474,29 +313,11 @@ JavaScript sẽ ép kiểu string `"5"` thành number `5`.
 console.log(5 == "5");
 ```
 
-### Output
+Output:
 
 ```js
 true
 ```
-
-### Giải thích
-
-`==` chỉ so sánh giá trị.
-
-JavaScript sẽ ép kiểu:
-
-```js
-"5" → 5
-```
-
-nên:
-
-```js
-5 == 5
-```
-
-→ `true`
 
 ---
 
@@ -504,26 +325,7 @@ nên:
 console.log(5 === "5");
 ```
 
-### Output
-
-```js
-false
-```
-
-### Giải thích
-
-`===` so sánh:
-- giá trị
-- và kiểu dữ liệu
-
-Ở đây:
-
-```js
-5        → number
-"5"      → string
-```
-
-Khác kiểu nên kết quả là:
+Output:
 
 ```js
 false
@@ -535,21 +337,11 @@ false
 console.log(null == undefined);
 ```
 
-### Output
+Output:
 
 ```js
 true
 ```
-
-### Giải thích
-
-Trong JavaScript:
-
-```js
-null == undefined
-```
-
-được quy định đặc biệt là `true`.
 
 ---
 
@@ -557,22 +349,7 @@ null == undefined
 console.log(null === undefined);
 ```
 
-### Output
-
-```js
-false
-```
-
-### Giải thích
-
-`===` không ép kiểu.
-
-```js
-null        → null
-undefined   → undefined
-```
-
-Khác kiểu dữ liệu nên kết quả là:
+Output:
 
 ```js
 false
@@ -584,26 +361,10 @@ false
 console.log(NaN == NaN);
 ```
 
-### Output
+Output:
 
 ```js
 false
-```
-
-### Giải thích
-
-`NaN` là giá trị đặc biệt.
-
-Trong JavaScript:
-
-```js
-NaN !== NaN
-```
-
-Muốn kiểm tra NaN phải dùng:
-
-```js
-Number.isNaN(value)
 ```
 
 ---
@@ -612,27 +373,11 @@ Number.isNaN(value)
 console.log(0 == false);
 ```
 
-### Output
+Output:
 
 ```js
 true
 ```
-
-### Giải thích
-
-JavaScript ép kiểu:
-
-```js
-false → 0
-```
-
-nên:
-
-```js
-0 == 0
-```
-
-→ `true`
 
 ---
 
@@ -640,20 +385,7 @@ nên:
 console.log(0 === false);
 ```
 
-### Output
-
-```js
-false
-```
-
-### Giải thích
-
-```js
-0         → number
-false     → boolean
-```
-
-Khác kiểu dữ liệu nên:
+Output:
 
 ```js
 false
@@ -665,32 +397,33 @@ false
 console.log("" == false);
 ```
 
-### Output
+Output:
 
 ```js
 true
 ```
 
-### Giải thích
+---
 
-JavaScript ép kiểu:
+# Giải thích
 
-```js
-"" → 0
-false → 0
-```
+## ==
 
-nên:
-
-```js
-0 == 0
-```
-
-→ `true`
+So sánh sau khi ép kiểu.
 
 ---
 
-# Nên dùng == hay ===?
+## ===
+
+So sánh:
+- giá trị
+- kiểu dữ liệu
+
+Không ép kiểu.
+
+---
+
+# Nên dùng gì?
 
 Nên dùng:
 
@@ -698,72 +431,22 @@ Nên dùng:
 ===
 ```
 
----
-
-# Vì sao?
-
-`===`:
+vì:
 - an toàn hơn
-- không ép kiểu tự động
-- tránh bug khó phát hiện
-
-Ví dụ:
-
-```js
-0 == false
-```
-
-→ `true`
-
-Điều này dễ gây lỗi logic.
-
----
-
-# Quy tắc thực tế
-
-## Nên dùng
-
-```js
-===
-```
-
-và
-
-```js
-!==
-```
-
----
-
-## Hạn chế dùng
-
-```js
-==
-```
-
-và
-
-```js
-!=
-```
-
-trừ khi thật sự muốn ép kiểu.
+- tránh bug do ép kiểu
+- dễ debug hơn
 
 ---
 
 # Kết luận
 
-- `==` so sánh sau khi ép kiểu
-- `===` so sánh cả giá trị và kiểu dữ liệu
-- `===` giúp code rõ ràng và ít lỗi hơn
-- Trong thực tế frontend/backend hiện đại nên ưu tiên dùng `===`
+`===` là cách so sánh được khuyến khích trong JavaScript hiện đại.
+
 ---
 
 # Câu A4 — Truthy & Falsy
 
 # Tất cả giá trị Falsy trong JavaScript
-
-JavaScript có các giá trị Falsy sau:
 
 ```js
 false
@@ -776,7 +459,7 @@ undefined
 NaN
 ```
 
-Ngoài các giá trị trên, hầu hết các giá trị khác đều là Truthy.
+Mọi giá trị khác đều là Truthy.
 
 ---
 
@@ -786,15 +469,13 @@ Ngoài các giá trị trên, hầu hết các giá trị khác đều là Truth
 if ("0") console.log("A");
 ```
 
-### Kết quả
+In:
 
 ```js
 A
 ```
 
-### Giải thích
-
-`"0"` là string không rỗng nên là Truthy.
+vì `"0"` là chuỗi không rỗng → truthy.
 
 ---
 
@@ -802,13 +483,9 @@ A
 if ("") console.log("B");
 ```
 
-### Kết quả
+Không in.
 
-Không in gì.
-
-### Giải thích
-
-`""` là chuỗi rỗng nên là Falsy.
+vì chuỗi rỗng là falsy.
 
 ---
 
@@ -816,15 +493,13 @@ Không in gì.
 if ([]) console.log("C");
 ```
 
-### Kết quả
+In:
 
 ```js
 C
 ```
 
-### Giải thích
-
-Array rỗng vẫn là Truthy trong JavaScript.
+Array rỗng vẫn là truthy.
 
 ---
 
@@ -832,15 +507,13 @@ Array rỗng vẫn là Truthy trong JavaScript.
 if ({}) console.log("D");
 ```
 
-### Kết quả
+In:
 
 ```js
 D
 ```
 
-### Giải thích
-
-Object rỗng vẫn là Truthy.
+Object rỗng vẫn là truthy.
 
 ---
 
@@ -848,13 +521,7 @@ Object rỗng vẫn là Truthy.
 if (null) console.log("E");
 ```
 
-### Kết quả
-
-Không in gì.
-
-### Giải thích
-
-`null` là giá trị Falsy.
+Không in.
 
 ---
 
@@ -862,13 +529,7 @@ Không in gì.
 if (0) console.log("F");
 ```
 
-### Kết quả
-
-Không in gì.
-
-### Giải thích
-
-`0` là giá trị Falsy.
+Không in.
 
 ---
 
@@ -876,17 +537,13 @@ Không in gì.
 if (-1) console.log("G");
 ```
 
-### Kết quả
+In:
 
 ```js
 G
 ```
 
-### Giải thích
-
-Mọi số khác `0` đều là Truthy.
-
-`-1` là Truthy.
+vì số khác 0 là truthy.
 
 ---
 
@@ -894,202 +551,136 @@ Mọi số khác `0` đều là Truthy.
 if (" ") console.log("H");
 ```
 
-### Kết quả
+In:
 
 ```js
 H
 ```
 
-### Giải thích
-
-`" "` là chuỗi có chứa ký tự space nên KHÔNG phải chuỗi rỗng.
-
-Do đó nó là Truthy.
+vì chuỗi chứa dấu cách vẫn là chuỗi không rỗng.
 
 ---
 
 # Kết luận
 
-## Falsy values:
+Trong JavaScript:
+- array rỗng và object rỗng vẫn là truthy
+- chỉ có một số ít giá trị là falsy
+
+---
+
+# Câu A5 — Template Literals
+
+## Cách 1
+
+### Code cũ
 
 ```js
-false
-0
--0
-0n
-""
-null
-undefined
-NaN
+var greeting = "Xin chào " + name + "! Bạn " + age + " tuổi.";
+```
+
+### Template Literal
+
+```js
+var greeting = `Xin chào ${name}! Bạn ${age} tuổi.`;
 ```
 
 ---
 
-## Truthy examples:
+## Cách 2
+
+### Code cũ
 
 ```js
-"0"
-[]
-{}
--1
-" "
+var url = "https://api.example.com/users/" + userId + "/orders?page=" + page;
+```
+
+### Template Literal
+
+```js
+var url = `https://api.example.com/users/${userId}/orders?page=${page}`;
 ```
 
 ---
 
-# Lưu ý quan trọng
+## Cách 3
 
-Nhiều người mới học thường nhầm:
+### Code cũ
 
 ```js
-[]
-{}
-"0"
+var html = "<div class=\"card\">" +
+    "<h2>" + title + "</h2>" +
+    "<p>" + description + "</p>" +
+    "<span>Giá: " + price + "đ</span>" +
+    "</div>";
 ```
 
-là Falsy.
+### Template Literal
 
-Thực tế:
-- array rỗng → Truthy
-- object rỗng → Truthy
-- string `"0"` → Truthy
+```js
+var html = `
+<div class="card">
+    <h2>${title}</h2>
+    <p>${description}</p>
+    <span>Giá: ${price}đ</span>
+</div>
+`;
+```
+
 ---
+
+# Ưu điểm của Template Literal
+
+- dễ đọc hơn
+- hỗ trợ xuống dòng
+- không cần nối chuỗi bằng `+`
+- dễ chèn biến bằng `${}`
+
+---
+
+# PHẦN C — SUY LUẬN
 
 # Câu C1 — Debug JavaScript
 
-# Code gốc
+## Lỗi 1 — Không kiểm tra kiểu dữ liệu
 
 ```js
-function tinhGiaGiamGia(giaBan, phanTramGiam) {
-    if (phanTramGiam < 0 || phanTramGiam > 100) {
-        return "Phần trăm giảm không hợp lệ"
-    }
-    
-    var giamGia = giaBan * phanTramGiam / 100
-    let giaSauGiam = giaBan - giamGia
-    
-    if (giaSauGiam = 0) {
-        console.log("Sản phẩm miễn phí!")
-    }
-    
-    return giaSauGiam
-}
-
-// Test
-const gia = tinhGiaGiamGia("100000", 20)
-console.log("Giá sau giảm: " + gia + "đ")
-
-const gia2 = tinhGiaGiamGia(50000, 110)
-console.log("Giá: " + gia2)
-
-for (var i = 0; i < 5; i++) {
-    setTimeout(function() {
-        console.log("Item " + i)
-    }, 1000)
-}
-```
-
----
-
-# Các lỗi trong chương trình
-
----
-
-# Lỗi 1 — Không kiểm tra kiểu dữ liệu của giaBan
-
-## Code lỗi
-
-```js
-const gia = tinhGiaGiamGia("100000", 20)
+tinhGiaGiamGia("100000", 20)
 ```
 
 `"100000"` là string, không phải number.
 
-JavaScript vẫn ép kiểu được nhưng dễ gây bug.
-
 ---
 
-## Cách sửa
-
-Kiểm tra kiểu dữ liệu:
-
-```js
-if (typeof giaBan !== "number") {
-    return "Giá bán phải là số"
-}
-```
-
----
-
-# Lỗi 2 — Không kiểm tra kiểu dữ liệu của phanTramGiam
+## Lỗi 2 — Không kiểm tra kiểu dữ liệu của phần trăm giảm
 
 Nếu nhập:
-
 ```js
 "20"
 ```
 
 hoặc:
-
 ```js
 abc
 ```
 
-chương trình có thể lỗi hoặc tính sai.
+chương trình sẽ sai logic.
 
 ---
 
-## Cách sửa
+## Lỗi 3 — Dùng dấu = thay vì ===
 
-```js
-if (typeof phanTramGiam !== "number") {
-    return "Phần trăm giảm phải là số"
-}
-```
-
----
-
-# Lỗi 3 — Dùng phép gán thay vì so sánh
-
-## Code lỗi
+### Code lỗi
 
 ```js
 if (giaSauGiam = 0)
 ```
 
-Dấu:
-
-```js
-=
-```
-
-là gán giá trị, KHÔNG phải so sánh.
+Đây là phép gán, không phải phép so sánh.
 
 ---
 
-## Hậu quả
-
-```js
-giaSauGiam = 0
-```
-
-sẽ:
-- gán giá trị 0
-- điều kiện trở thành false
-
-làm mất giá trị thật của biến.
-
----
-
-## Cách sửa
-
-```js
-if (giaSauGiam === 0)
-```
-
----
-
-# Lỗi 4 — Thiếu dấu chấm phẩy
+## Lỗi 4 — Thiếu dấu ;
 
 Ví dụ:
 
@@ -1097,22 +688,23 @@ Ví dụ:
 return "Phần trăm giảm không hợp lệ"
 ```
 
-JavaScript vẫn chạy được do ASI (Automatic Semicolon Insertion),
-nhưng dễ gây lỗi khó debug.
-
 ---
 
-## Cách sửa
+## Lỗi 5 — Không kiểm tra giá trị âm
+
+Nếu:
 
 ```js
-return "Phần trăm giảm không hợp lệ";
+giaBan = -1000
 ```
+
+thì không hợp lệ.
 
 ---
 
-# Lỗi 5 — Dùng var trong vòng lặp setTimeout
+## Lỗi 6 — Dùng var trong vòng lặp setTimeout
 
-## Code lỗi
+### Code lỗi
 
 ```js
 for (var i = 0; i < 5; i++) {
@@ -1124,7 +716,7 @@ for (var i = 0; i < 5; i++) {
 
 ---
 
-## Kết quả thực tế
+# Lỗi "ẩn" liên quan đến var
 
 Sau 1 giây sẽ in:
 
@@ -1138,21 +730,15 @@ Item 5
 
 ---
 
-## Vì sao?
+# Vì sao?
 
 `var` có function scope.
 
-Biến `i` chỉ có MỘT bản dùng chung cho toàn bộ vòng lặp.
+Toàn bộ vòng lặp dùng chung một biến `i`.
 
 Khi `setTimeout` chạy:
 - vòng lặp đã kết thúc
 - `i = 5`
-
-nên tất cả đều in:
-
-```js
-Item 5
-```
 
 ---
 
@@ -1164,99 +750,11 @@ Dùng:
 let
 ```
 
-vì `let` có block scope.
-
 ---
 
-## Code đúng
+# Code đúng
 
 ```js
-for (let i = 0; i < 5; i++) {
-    setTimeout(function() {
-        console.log("Item " + i);
-    }, 1000);
-}
-```
-
----
-
-## Kết quả đúng
-
-```js
-Item 0
-Item 1
-Item 2
-Item 3
-Item 4
-```
-
----
-
-# Lỗi 6 — Không kiểm tra giá trị âm của giaBan
-
-Nếu:
-
-```js
-giaBan = -1000
-```
-
-thì vô lý vì giá sản phẩm không thể âm.
-
----
-
-## Cách sửa
-
-```js
-if (giaBan < 0) {
-    return "Giá bán không hợp lệ";
-}
-```
-
----
-
-# Phiên bản code đã sửa
-
-```js
-function tinhGiaGiamGia(giaBan, phanTramGiam) {
-
-    // Kiểm tra kiểu dữ liệu
-    if (
-        typeof giaBan !== "number" ||
-        typeof phanTramGiam !== "number"
-    ) {
-        return "Input phải là số";
-    }
-
-    // Kiểm tra giá trị hợp lệ
-    if (giaBan < 0) {
-        return "Giá bán không hợp lệ";
-    }
-
-    if (phanTramGiam < 0 || phanTramGiam > 100) {
-        return "Phần trăm giảm không hợp lệ";
-    }
-
-    // Tính giảm giá
-    let giamGia = giaBan * phanTramGiam / 100;
-
-    let giaSauGiam = giaBan - giamGia;
-
-    // Kiểm tra miễn phí
-    if (giaSauGiam === 0) {
-        console.log("Sản phẩm miễn phí!");
-    }
-
-    return giaSauGiam;
-}
-
-// Test
-const gia = tinhGiaGiamGia(100000, 20);
-console.log("Giá sau giảm:", gia + "đ");
-
-const gia2 = tinhGiaGiamGia(50000, 110);
-console.log("Giá:", gia2);
-
-// setTimeout
 for (let i = 0; i < 5; i++) {
 
     setTimeout(function () {
@@ -1271,7 +769,7 @@ for (let i = 0; i < 5; i++) {
 
 # Kết luận
 
-Các lỗi chính gồm:
+Các lỗi chính:
 - ép kiểu dữ liệu
 - dùng `=` thay vì `===`
 - thiếu validate input
@@ -1279,31 +777,82 @@ Các lỗi chính gồm:
 - thiếu semicolon
 - thiếu kiểm tra dữ liệu âm
 
-Quan trọng nhất là lỗi `var` trong `setTimeout`,
-đây là lỗi rất phổ biến khi học JavaScript bất đồng bộ.
-Câu C2 (10đ) — Bài toán thực tế
-Viết chương trình tính hóa đơn nhà hàng:
+---
 
-Input: Danh sách món ăn + giá + số lượng
-Quy tắc:
-- Tổng > 500k → giảm 10%
-- Tổng > 1 triệu → giảm 15%  
-- Ngày thứ 3 (Wednesday) → giảm thêm 5%
-- VAT 8%
-- Tip 5% (optional)
+# Câu C2 — Bài toán thực tế
 
-Output: Hóa đơn chi tiết dạng:
+# Ý tưởng chương trình
+
+Chương trình:
+- tính tổng món ăn
+- áp dụng giảm giá
+- tính VAT
+- tính tip
+- in hóa đơn
+
+---
+
+# Quy tắc giảm giá
+
+| Điều kiện | Giảm giá |
+|---|---|
+| Tổng > 500k | 10% |
+| Tổng > 1 triệu | 15% |
+| Wednesday | +5% |
+
+---
+
+# VAT
+
+```js
+8%
+```
+
+---
+
+# Tip
+
+```js
+5%
+```
+
+(có thể chọn)
+
+---
+
+# Ví dụ hóa đơn
+
+```text
 ╔══════════════════════════════════════╗
-║        HÓA ĐƠN NHÀ HÀNG           ║
+║        HÓA ĐƠN NHÀ HÀNG              ║
 ╠══════════════════════════════════════╣
-║ 1. Phở bò      x2    @65k  = 130k  ║
-║ 2. Trà đá      x3    @5k   = 15k   ║
-║ 3. Bún chả     x1    @55k  = 55k   ║
+║ 1. Phở bò      x2    @65k = 130k     ║
+║ 2. Trà đá      x3    @5k  = 15k      ║
+║ 3. Bún chả     x1    @55k = 55k      ║
 ╠══════════════════════════════════════╣
-║ Tổng cộng:              200.000đ    ║
-║ Giảm giá (0%):           0đ         ║
-║ VAT (8%):                16.000đ    ║
-║ Tip (5%):                10.000đ    ║
+║ Tổng cộng:              200.000đ     ║
+║ Giảm giá (0%):           0đ          ║
+║ VAT (8%):                16.000đ     ║
+║ Tip (5%):                10.000đ     ║
 ╠══════════════════════════════════════╣
-║ THANH TOÁN:              226.000đ   ║
+║ THANH TOÁN:              226.000đ    ║
 ╚══════════════════════════════════════╝
+```
+
+---
+
+# Các kỹ thuật sử dụng
+
+- Array
+- Object
+- Loop
+- if / else
+- Function
+- String formatting
+- Math calculations
+
+---
+
+# Kết luận
+
+Đây là bài toán mô phỏng hệ thống tính tiền thực tế trong nhà hàng.
