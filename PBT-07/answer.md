@@ -167,3 +167,789 @@ Do đó:
 - `let` và `const` không được sử dụng trước khi khai báo
 - `const` không cho phép gán lại biến nhưng có thể thay đổi nội dung object/array
 - `let` có block scope nên biến trong block và ngoài block là khác nhau
+---
+
+# Câu A2 — Data Types & Coercion
+
+## Dự đoán kết quả
+
+```js
+console.log(typeof null);
+```
+
+### Output
+
+```js
+"object"
+```
+
+### Giải thích
+
+Đây là lỗi lịch sử của JavaScript.  
+`null` thực chất không phải object nhưng `typeof null` vẫn trả về `"object"`.
+
+---
+
+```js
+console.log(typeof undefined);
+```
+
+### Output
+
+```js
+"undefined"
+```
+
+### Giải thích
+
+Biến chưa có giá trị sẽ có kiểu `undefined`.
+
+---
+
+```js
+console.log(typeof NaN);
+```
+
+### Output
+
+```js
+"number"
+```
+
+### Giải thích
+
+`NaN` nghĩa là:
+
+```js
+Not a Number
+```
+
+nhưng trong JavaScript nó vẫn thuộc kiểu `number`.
+
+---
+
+```js
+console.log("5" + 3);
+```
+
+### Output
+
+```js
+"53"
+```
+
+### Giải thích
+
+Khi dùng dấu `+` với string, JavaScript sẽ nối chuỗi.
+
+Số `3` được chuyển thành string `"3"`.
+
+Kết quả:
+
+```js
+"5" + "3"
+```
+
+→ `"53"`
+
+---
+
+```js
+console.log("5" - 3);
+```
+
+### Output
+
+```js
+2
+```
+
+### Giải thích
+
+Dấu `-` không dùng để nối chuỗi.
+
+JavaScript sẽ ép `"5"` thành số `5`.
+
+Kết quả:
+
+```js
+5 - 3
+```
+
+→ `2`
+
+---
+
+```js
+console.log("5" * "3");
+```
+
+### Output
+
+```js
+15
+```
+
+### Giải thích
+
+Dấu `*` yêu cầu phép toán số học nên JavaScript ép cả hai string thành number.
+
+```js
+5 * 3
+```
+
+→ `15`
+
+---
+
+```js
+console.log(true + true);
+```
+
+### Output
+
+```js
+2
+```
+
+### Giải thích
+
+Trong JavaScript:
+
+```js
+true = 1
+false = 0
+```
+
+Do đó:
+
+```js
+1 + 1 = 2
+```
+
+---
+
+```js
+console.log([] + []);
+```
+
+### Output
+
+```js
+""
+```
+
+### Giải thích
+
+Array rỗng chuyển thành chuỗi rỗng:
+
+```js
+"" + ""
+```
+
+→ `""`
+
+---
+
+```js
+console.log([] + {});
+```
+
+### Output
+
+```js
+"[object Object]"
+```
+
+### Giải thích
+
+- `[]` chuyển thành `""`
+- `{}` chuyển thành `"[object Object]"`
+
+Kết quả:
+
+```js
+"" + "[object Object]"
+```
+
+→ `"[object Object]"`
+
+---
+
+```js
+console.log({} + []);
+```
+
+### Output
+
+```js
+0
+```
+
+hoặc:
+
+```js
+"[object Object]"
+```
+
+(tùy môi trường chạy)
+
+### Giải thích
+
+JavaScript có thể hiểu:
+
+```js
+{} 
++[]
+```
+
+là:
+
+- `{}` = block code rỗng
+- `+[]` = ép array rỗng thành số
+
+```js
++[] = 0
+```
+
+nên kết quả có thể là:
+
+```js
+0
+```
+
+Trong một số môi trường khác, nó có thể nối chuỗi và ra:
+
+```js
+"[object Object]"
+```
+
+---
+
+# Giải thích vì sao "5" + 3 và "5" - 3 khác nhau
+
+## "5" + 3
+
+Dấu `+` trong JavaScript vừa dùng để:
+- cộng số
+- nối chuỗi
+
+Khi có string xuất hiện, JavaScript ưu tiên nối chuỗi.
+
+```js
+"5" + 3
+```
+
+→ `"53"`
+
+---
+
+## "5" - 3
+
+Dấu `-` chỉ dùng cho phép toán số học.
+
+JavaScript sẽ ép kiểu string `"5"` thành number `5`.
+
+```js
+5 - 3
+```
+
+→ `2`
+
+---
+
+# Kết luận
+
+- JavaScript có cơ chế ép kiểu tự động (type coercion)
+- Dấu `+` có thể dùng để nối chuỗi
+- Các toán tử `-`, `*`, `/` thường ép dữ liệu về number
+- Một số kết quả như `typeof null` là lỗi lịch sử của JavaScript
+---
+
+# Câu A3 — So sánh == vs ===
+
+## Dự đoán kết quả
+
+```js
+console.log(5 == "5");
+```
+
+### Output
+
+```js
+true
+```
+
+### Giải thích
+
+`==` chỉ so sánh giá trị.
+
+JavaScript sẽ ép kiểu:
+
+```js
+"5" → 5
+```
+
+nên:
+
+```js
+5 == 5
+```
+
+→ `true`
+
+---
+
+```js
+console.log(5 === "5");
+```
+
+### Output
+
+```js
+false
+```
+
+### Giải thích
+
+`===` so sánh:
+- giá trị
+- và kiểu dữ liệu
+
+Ở đây:
+
+```js
+5        → number
+"5"      → string
+```
+
+Khác kiểu nên kết quả là:
+
+```js
+false
+```
+
+---
+
+```js
+console.log(null == undefined);
+```
+
+### Output
+
+```js
+true
+```
+
+### Giải thích
+
+Trong JavaScript:
+
+```js
+null == undefined
+```
+
+được quy định đặc biệt là `true`.
+
+---
+
+```js
+console.log(null === undefined);
+```
+
+### Output
+
+```js
+false
+```
+
+### Giải thích
+
+`===` không ép kiểu.
+
+```js
+null        → null
+undefined   → undefined
+```
+
+Khác kiểu dữ liệu nên kết quả là:
+
+```js
+false
+```
+
+---
+
+```js
+console.log(NaN == NaN);
+```
+
+### Output
+
+```js
+false
+```
+
+### Giải thích
+
+`NaN` là giá trị đặc biệt.
+
+Trong JavaScript:
+
+```js
+NaN !== NaN
+```
+
+Muốn kiểm tra NaN phải dùng:
+
+```js
+Number.isNaN(value)
+```
+
+---
+
+```js
+console.log(0 == false);
+```
+
+### Output
+
+```js
+true
+```
+
+### Giải thích
+
+JavaScript ép kiểu:
+
+```js
+false → 0
+```
+
+nên:
+
+```js
+0 == 0
+```
+
+→ `true`
+
+---
+
+```js
+console.log(0 === false);
+```
+
+### Output
+
+```js
+false
+```
+
+### Giải thích
+
+```js
+0         → number
+false     → boolean
+```
+
+Khác kiểu dữ liệu nên:
+
+```js
+false
+```
+
+---
+
+```js
+console.log("" == false);
+```
+
+### Output
+
+```js
+true
+```
+
+### Giải thích
+
+JavaScript ép kiểu:
+
+```js
+"" → 0
+false → 0
+```
+
+nên:
+
+```js
+0 == 0
+```
+
+→ `true`
+
+---
+
+# Nên dùng == hay ===?
+
+Nên dùng:
+
+```js
+===
+```
+
+---
+
+# Vì sao?
+
+`===`:
+- an toàn hơn
+- không ép kiểu tự động
+- tránh bug khó phát hiện
+
+Ví dụ:
+
+```js
+0 == false
+```
+
+→ `true`
+
+Điều này dễ gây lỗi logic.
+
+---
+
+# Quy tắc thực tế
+
+## Nên dùng
+
+```js
+===
+```
+
+và
+
+```js
+!==
+```
+
+---
+
+## Hạn chế dùng
+
+```js
+==
+```
+
+và
+
+```js
+!=
+```
+
+trừ khi thật sự muốn ép kiểu.
+
+---
+
+# Kết luận
+
+- `==` so sánh sau khi ép kiểu
+- `===` so sánh cả giá trị và kiểu dữ liệu
+- `===` giúp code rõ ràng và ít lỗi hơn
+- Trong thực tế frontend/backend hiện đại nên ưu tiên dùng `===`
+---
+
+# Câu A4 — Truthy & Falsy
+
+# Tất cả giá trị Falsy trong JavaScript
+
+JavaScript có các giá trị Falsy sau:
+
+```js
+false
+0
+-0
+0n
+""
+null
+undefined
+NaN
+```
+
+Ngoài các giá trị trên, hầu hết các giá trị khác đều là Truthy.
+
+---
+
+# Dự đoán kết quả
+
+```js
+if ("0") console.log("A");
+```
+
+### Kết quả
+
+```js
+A
+```
+
+### Giải thích
+
+`"0"` là string không rỗng nên là Truthy.
+
+---
+
+```js
+if ("") console.log("B");
+```
+
+### Kết quả
+
+Không in gì.
+
+### Giải thích
+
+`""` là chuỗi rỗng nên là Falsy.
+
+---
+
+```js
+if ([]) console.log("C");
+```
+
+### Kết quả
+
+```js
+C
+```
+
+### Giải thích
+
+Array rỗng vẫn là Truthy trong JavaScript.
+
+---
+
+```js
+if ({}) console.log("D");
+```
+
+### Kết quả
+
+```js
+D
+```
+
+### Giải thích
+
+Object rỗng vẫn là Truthy.
+
+---
+
+```js
+if (null) console.log("E");
+```
+
+### Kết quả
+
+Không in gì.
+
+### Giải thích
+
+`null` là giá trị Falsy.
+
+---
+
+```js
+if (0) console.log("F");
+```
+
+### Kết quả
+
+Không in gì.
+
+### Giải thích
+
+`0` là giá trị Falsy.
+
+---
+
+```js
+if (-1) console.log("G");
+```
+
+### Kết quả
+
+```js
+G
+```
+
+### Giải thích
+
+Mọi số khác `0` đều là Truthy.
+
+`-1` là Truthy.
+
+---
+
+```js
+if (" ") console.log("H");
+```
+
+### Kết quả
+
+```js
+H
+```
+
+### Giải thích
+
+`" "` là chuỗi có chứa ký tự space nên KHÔNG phải chuỗi rỗng.
+
+Do đó nó là Truthy.
+
+---
+
+# Kết luận
+
+## Falsy values:
+
+```js
+false
+0
+-0
+0n
+""
+null
+undefined
+NaN
+```
+
+---
+
+## Truthy examples:
+
+```js
+"0"
+[]
+{}
+-1
+" "
+```
+
+---
+
+# Lưu ý quan trọng
+
+Nhiều người mới học thường nhầm:
+
+```js
+[]
+{}
+"0"
+```
+
+là Falsy.
+
+Thực tế:
+- array rỗng → Truthy
+- object rỗng → Truthy
+- string `"0"` → Truthy
