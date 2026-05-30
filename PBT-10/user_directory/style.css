@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+.hidden {
+    display: none;
+}
+
+#userList {
+    margin-top: 20px;
+}
+
+.user-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    margin-right: 5px;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
+#loading {
+    padding: 20px;
+    font-size: 20px;
+}
