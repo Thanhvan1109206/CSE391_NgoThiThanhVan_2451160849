@@ -1,117 +1,86 @@
 import { useState } from "react";
+import TodoItem from "./components/TodoItem";
+import TodoFilter from "./components/TodoFilter";
 
 function App() {
-  const [items, setItems] = useState([
-    { id: 1, name: "HTML" },
-    { id: 2, name: "CSS" },
-    { id: 3, name: "JavaScript" }
-  ]);
+  const [todos, setTodos] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+  const [filter, setFilter] = useState("all");
 
-  const [newItem, setNewItem] = useState("");
-  const [editingId, setEditingId] = useState(null);
-  const [editText, setEditText] = useState("");
+  function addTodo() {
+    if (inputValue.trim() === "") return;
 
-  // CREATE
-  function handleAdd() {
-    if (newItem.trim() === "") return;
-
-    const item = {
+    const newTodo = {
       id: Date.now(),
-      name: newItem
+      text: inputValue,
+      done: false,
     };
 
-    setItems([...items, item]);
-    setNewItem("");
+    setTodos([...todos, newTodo]);
+    setInputValue("");
   }
 
-  // DELETE
-  function handleDelete(id) {
-    setItems(items.filter(item => item.id !== id));
+  function handleKeyPress(event) {
+    if (event.key === "Enter") {
+      addTodo();
+    }
   }
 
-  // Bắt đầu sửa
-  function handleEdit(item) {
-    setEditingId(item.id);
-    setEditText(item.name);
-  }
-
-  // UPDATE
-  function handleSave(id) {
-    if (editText.trim() === "") return;
-
-    setItems(
-      items.map(item =>
-        item.id === id
-          ? { ...item, name: editText }
-          : item
+  function toggleTodo(id) {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, done: !todo.done } : todo
       )
     );
-
-    setEditingId(null);
-    setEditText("");
   }
 
+  function deleteTodo(id) {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  }
+
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === "active") return !todo.done;
+    if (filter === "completed") return todo.done;
+    return true;
+  });
+
+  const activeCount = todos.filter((todo) => !todo.done).length;
+  const completedCount = todos.filter((todo) => todo.done).length;
+
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Tier 6 - CRUD Demo</h1>
+    <div
+      style={{
+        maxWidth: "500px",
+        margin: "0 auto",
+        padding: "20px",
+      }}
+    >
+      <h1>📋 Todo List</h1>
 
-      <div style={{ marginBottom: "20px" }}>
-        <input
-          value={newItem}
-          onChange={(e) => setNewItem(e.target.value)}
-          placeholder="Nhập môn học..."
-          style={{ padding: "8px" }}
+      <input
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        onKeyDown={handleKeyPress}
+        placeholder="Nhập công việc..."
+      />
+
+      <button onClick={addTodo}>Thêm</button>
+
+      <TodoFilter filter={filter} setFilter={setFilter} />
+
+      {filteredTodos.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          onToggle={toggleTodo}
+          onDelete={deleteTodo}
         />
-
-        <button
-          onClick={handleAdd}
-          style={{
-            marginLeft: "10px",
-            padding: "8px 12px"
-          }}
-        >
-          ➕ Thêm
-        </button>
-      </div>
-
-      <h2>Danh sách môn học</h2>
-
-      {items.map(item => (
-        <div
-          key={item.id}
-          style={{
-            display: "flex",
-            gap: "10px",
-            alignItems: "center",
-            marginBottom: "10px"
-          }}
-        >
-          {editingId === item.id ? (
-            <>
-              <input
-                value={editText}
-                onChange={(e) => setEditText(e.target.value)}
-              />
-
-              <button onClick={() => handleSave(item.id)}>
-                💾 Lưu
-              </button>
-            </>
-          ) : (
-            <>
-              <span>{item.name}</span>
-
-              <button onClick={() => handleEdit(item)}>
-                ✏️ Sửa
-              </button>
-
-              <button onClick={() => handleDelete(item.id)}>
-                🗑 Xóa
-              </button>
-            </>
-          )}
-        </div>
       ))}
+
+      <hr />
+
+      <p>Chưa hoàn thành: {activeCount}</p>
+      <p>Đã hoàn thành: {completedCount}</p>
     </div>
   );
 }
