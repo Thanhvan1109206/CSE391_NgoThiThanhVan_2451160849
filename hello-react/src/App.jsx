@@ -1,75 +1,38 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import ProductCard from "./components/ProductCard";
-import UserCard from "./components/UserCard";
+import { useState } from "react";
 
 function App() {
-  const products = [
-    {
-      id: 1,
-      name: "iPhone 15",
-      price: "25000000",
-      image:
-        "https://via.placeholder.com/200",
-    },
-    {
-      id: 2,
-      name: "Samsung S24",
-      price: "22000000",
-      image:
-        "https://via.placeholder.com/200",
-    },
-    {
-      id: 3,
-      name: "Xiaomi 14",
-      price: "15000000",
-      image:
-        "https://via.placeholder.com/200",
-    },
-  ];
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState("");
+  const [isVisible, setIsVisible] = useState(true);
 
   return (
-    <div>
-      <Header />
+    <div style={{ padding: "20px" }}>
+      <h1>Tier 4 - useState</h1>
 
-      <h2>Sản phẩm</h2>
+      <h2>Counter: {count}</h2>
 
-      <div
-        style={{
-          display: "flex",
-        }}
-      >
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            name={product.name}
-            price={product.price}
-            image={product.image}
-          />
-        ))}
-      </div>
+      <button onClick={() => setCount(count + 1)}>+1</button>
+      <button onClick={() => setCount(count - 1)}>-1</button>
+      <button onClick={() => setCount(0)}>Reset</button>
 
-      <h2>Người dùng</h2>
+      <hr />
 
-      <UserCard
-        name="Minh"
-        email="minh@gmail.com"
-        avatar="https://via.placeholder.com/100"
+      <input
+        type="text"
+        placeholder="Nhập tên"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       />
 
-      <UserCard
-        name="An"
-        email="an@gmail.com"
-        avatar="https://via.placeholder.com/100"
-      />
+      <p>Xin chào: {name}</p>
 
-      <UserCard
-        name="Linh"
-        email="linh@gmail.com"
-        avatar="https://via.placeholder.com/100"
-      />
+      <hr />
 
-      <Footer />
+      <button onClick={() => setIsVisible(!isVisible)}>
+        {isVisible ? "Ẩn" : "Hiện"}
+      </button>
+
+      {isVisible && <p>Nội dung đang hiển thị</p>}
     </div>
   );
 }
